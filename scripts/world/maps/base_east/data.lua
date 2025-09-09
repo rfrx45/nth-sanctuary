@@ -12,6 +12,7 @@ return {
   nextlayerid = 10,
   nextobjectid = 36,
   properties = {
+    ["border"] = "base_sanctum",
     ["music"] = "homebase"
   },
   tilesets = {

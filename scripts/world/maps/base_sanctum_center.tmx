@@ -4,6 +4,7 @@
   <export target="base_sanctum_center.lua" format="lua"/>
  </editorsettings>
  <properties>
+  <property name="border" value="base_sanctum"/>
   <property name="music" value="homebase"/>
   <property name="name" value="Base Sanctum - Center"/>
  </properties>
