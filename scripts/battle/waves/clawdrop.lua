@@ -31,7 +31,7 @@ function Aiming:onStart()
 		end
 	end
     -- Every 0.5 seconds...
-    self.timer:every((12*self.ratio)/30, function()
+    self.timer:everyInstant((12*self.ratio)/30, function()
         -- Get all enemies that selected this wave as their attack
         local spawned = {}
 		local swipe_width = 50 + self.sameattack * 5
