@@ -67,7 +67,7 @@ function Aiming:onStart()
 			if self.sameattack == 2 then
 				sm = 1
 			end
-			for i = 1,3-sm do
+			for i = 0,2-sm do
 				local bul
 				if self.sameattacker == 0 then
 					bul = self:spawnBullet("diamondbullet", (xx - (swipe_width * side)) + (i * (swipe_width * side)), yy, temp_angle, 3, temp_angle)
