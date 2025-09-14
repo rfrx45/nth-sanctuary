@@ -52,7 +52,8 @@ function Dummy:init()
     -- Register party act with Ralsei called "Tell Story"
     -- (second argument is description, usually empty)
     self:registerAct("Tell Story", "", {"ralsei"})
-    self:registerAct("Unleash", "Unleash", nil, 80)
+	self:getAct("Check").description = "Consider\nstrategy"
+    self:registerAct("Unleash", "Reveal\nweakness", nil, 80)
 end
 
 function Dummy:onAct(battler, name)

@@ -24,6 +24,16 @@ function Mod:postInit(new_file)
             return orig(self, enemy, ...)
         end
     end)
+	Mod.titan_dissolve_shader = love.graphics.newShader[[
+    extern float amount;
+    vec4 effect(vec4 color, Image tex, vec2 texture_coords, vec2 screen_coords) {
+        if (Texel(tex, texture_coords).a < amount) {
+            // a discarded pixel wont be applied as the stencil.
+            discard;
+        }
+        return vec4(1.0);
+    }
+ ]]
 end
 --[==[
 function Mod:preInit()
