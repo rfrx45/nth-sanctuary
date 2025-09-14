@@ -129,7 +129,7 @@ function Guei:getEncounterText()
 				end
 			else
 				if Game:hasPartyMember("jamm") then
-					return "* Guei looks [color:blue]TIRED[color:reset]. [color:yellow]DEFEND[color:reset] to gain [color:yellow]TP[color:reset], then try Ralsei's [color:blue]PACIFY[color:reset] or Jamm's [color:blue]NUMBSHOT[color:reset]!"
+					return "* Guei looks [color:blue]TIRED[color:reset]. [color:yellow]DEFEND[color:reset] to gain [color:yellow]TP[color:reset], then try Ralsei's [color:blue]PACIFY[color:reset] or Jamm's [color:blue]NUMBSHOT[color:reset]...!"
 				else
 					return "* Guei looks [color:blue]TIRED[color:reset]. [color:yellow]DEFEND[color:reset] to gain [color:yellow]TP[color:reset], then try Ralsei's MAGIC, [color:blue]PACIFY[color:reset]...!"
 				end
