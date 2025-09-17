@@ -70,7 +70,7 @@ function GueiChaser:init(data)
 	self:setHitbox(20+5, 34+10, 20, 20)
 end
 
-function ChaserEnemy:update()
+function GueiChaser:update()
     if self:isActive() then
         if self.path and self.world.map.paths[self.path] then
             local path = self.world.map.paths[self.path]
