@@ -59,10 +59,45 @@ function PianoTutorialText:draw()
 		for i, lines in ipairs(self.instruction_lines) do
 			local xloc = SCREEN_WIDTH + 100 - margin - (easelerp * 100)
 			if Input.usingGamepad() then
-				local sprite_pos = -120 + easelerp * 140
-				sprite_pos = 776 - easelerp * 150 - 125
-				Draw.draw(Input.getTexture("confirm"), sprite_pos, 368, 0, 2, 2)
-				love.graphics.printfOutline("Rotate", sprite_pos+35, 368, 1)
+				local buttspr = Input.getTexture(lines.but)
+				local butoffset = 4
+				if not lines.cancel then
+					local str = " : "..lines.line
+					local strwidth = self.font:getWidth(str)
+					love.graphics.printfOutline(str, xloc - strwidth, yloc + (space * i), 1)
+					local butxpos = xloc - strwidth - buttspr:getWidth() + butmarg
+					Draw.draw(buttspr, butxpos, yloc + (space * i) + butoffset, 0, 2, 2)
+					if lines.hold ~= nil then
+						local holdstr = "Hold "
+						local holdstrwidth = self.font:getWidth(holdstr)
+						love.graphics.printfOutline(holdstr, butxpos - holdstrwidth, yloc + (space * i), 1)
+					end
+					if lines.holdvaluelimit ~= nil then
+						local holdstr = "Hold "
+						local holdstrwidth = self.font:getWidth(holdstr)
+						local spritexpos = butxpos - holdstrwidth - 28 - 6
+						local spriteypos = yloc + (space * i) + 3
+						Draw.setColor(1,1,1,lines.holdvalue / 8)
+						Draw.draw(self.timer_tex[1 + math.floor(Utils.clamp((28 - ((self.holdvalue / self.holdvaluelimit) * 28)), 0, 28))], spritexpos, spriteypos, 0, 2, 2)
+					end
+				else
+					local str = " : "..lines.line
+					local strwidth = self.font:getWidth(str)
+					Draw.setColor(redcol[1], redcol[2], redcol[3], 1)
+					love.graphics.printfOutline(str, xloc - strwidth, yloc + (space * i), 1)
+					local butxpos = xloc - strwidth - buttspr:getWidth() + butmarg
+					Draw.draw(buttspr, butxpos, yloc + (space * i) + butoffset, 0, 2, 2)
+					local holdstr = "Hold "
+					local holdstrwidth = self.font:getWidth(holdstr)
+					love.graphics.printfOutline(holdstr, butxpos - holdstrwidth - 4, yloc + (space * i), 1)
+					local spritexpos = butxpos - 4 - 28 - 1 - holdstrwidth + Utils.round(butmarg / 2)
+					local spriteypos = yloc + (space * i) + 3
+					Draw.setColor(redcol[1], redcol[2], redcol[3], self.canceltimer/8)
+					if self.instruction_active then
+						Draw.draw(self.timer_tex[1 + math.floor(Utils.clamp((28 - ((self.canceltimer / self.canceltime) * 28)), 0, 28))], spritexpos, spriteypos, 0, 2, 2)
+					end
+				end
+				Draw.setColor(1,1,1,1)
 			else
 				local holdstr = ""
 				if lines.hold then
