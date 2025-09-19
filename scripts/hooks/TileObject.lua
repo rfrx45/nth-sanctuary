@@ -15,6 +15,8 @@ function TileObject:init(tileset, tile, x, y, w, h, rotation, flip_x, flip_y, pr
 	self.light_type = self.properties["light_type"] or 1
 	self.light_alpha = self.properties["light_alpha"] or 1
 	self.light_color = Utils.parseColorProperty(self.properties["light_color"])
+	self.light_dust = self.properties["light_dust"] or false
+	self.light_amount = 1
 	
     local origin = Tileset.ORIGINS[self.tileset.object_alignment] or Tileset.ORIGINS["unspecified"]
     self:setOrigin(origin[1], origin[2])
@@ -70,7 +72,7 @@ function TileObject:draw()
     end
 	if self.light_area and self.light_type == 1 then
 		love.graphics.setBlendMode("add")
-		love.graphics.setColor(self.light_color[1], self.light_color[2], self.light_color[3], self.light_alpha)
+		love.graphics.setColor(self.light_color[1], self.light_color[2], self.light_color[3], self.light_alpha * self.light_amount)
 	end
     self.tileset:drawTile(self.tile, self.width/2, self.height/2, 0, sx, sy, tile_width/2, tile_height/2)
 	love.graphics.setBlendMode("alpha")

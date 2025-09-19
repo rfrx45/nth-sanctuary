@@ -252,6 +252,7 @@ THE KNIGHT IS TO NO FAULT.</property>
     <property name="light" type="bool" value="true"/>
     <property name="light_alpha" type="float" value="0.2"/>
     <property name="light_color" type="color" value="#ff7ffaff"/>
+    <property name="light_dust" type="bool" value="true"/>
     <property name="light_type" type="int" value="1"/>
    </properties>
   </object>

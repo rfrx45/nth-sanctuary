@@ -35,6 +35,16 @@ function Mod:postInit(new_file)
     }
  ]]
 end
+function Mod:updateLightBeams(alpha)
+	for index, value in ipairs(Game.world.stage:getObjects(TileObject)) do
+		if value.light_area then
+			value.light_amount = Utils.lerp(0.1, 1, alpha)
+		end
+	end
+	for index, value in ipairs(Game.world.map:getEvents("lightbeamfx")) do
+		value.alpha = Utils.lerp(0.1, 1, alpha)
+	end
+end
 --[==[
 function Mod:preInit()
     ---@return string|number[][]

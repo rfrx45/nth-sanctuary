@@ -748,6 +748,7 @@ return {
             ["light"] = true,
             ["light_alpha"] = 0.2,
             ["light_color"] = "#ff7ffaff",
+            ["light_dust"] = true,
             ["light_type"] = 1
           }
         }

@@ -73,7 +73,7 @@ function ChurchLightBeamFX:drawParticles()
     shader:send("factor", 1)
 	love.graphics.setBlendMode("add")
 	for i, part in ipairs(self.particles) do
-		Draw.setColor(1, 1, 1, part.alpha)
+		Draw.setColor(1, 1, 1, part.alpha * self.alpha)
 		Draw.draw(self.part_tex, part.x, part.y, 0, part.size, part.size)
 	end
 	love.graphics.setBlendMode("alpha")
@@ -85,7 +85,7 @@ function ChurchLightBeamFX:draw()
     local mask_canvas = Draw.pushCanvas(SCREEN_WIDTH, SCREEN_HEIGHT)
 	local transformed = false
 	for index, value in ipairs(Game.world.stage:getObjects(TileObject)) do
-		if value.light_area and value.light_type == 1 then
+		if value.light_area and value.light_dust then
 			if not transformed then
 				love.graphics.applyTransform(value.parent:getFullTransform())
 				transformed = true
