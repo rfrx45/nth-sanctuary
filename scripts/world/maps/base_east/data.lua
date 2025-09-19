@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 19,
-  nextobjectid = 66,
+  nextobjectid = 72,
   properties = {
     ["border"] = "base_sanctum",
     ["music"] = "homebase"
@@ -972,25 +972,6 @@ return {
       properties = {},
       objects = {
         {
-          id = 43,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 80,
-          y = 890,
-          width = 160,
-          height = 720,
-          rotation = 0,
-          gid = 625,
-          visible = true,
-          properties = {
-            ["light"] = true,
-            ["light_alpha"] = 0.1,
-            ["light_color"] = "#ffffffff",
-            ["light_type"] = 1
-          }
-        },
-        {
           id = 48,
           name = "",
           type = "",
@@ -1029,66 +1010,44 @@ return {
           }
         },
         {
-          id = 51,
+          id = 67,
           name = "",
           type = "",
           shape = "rectangle",
-          x = 800,
-          y = 890,
-          width = 160,
-          height = 720,
+          x = -126,
+          y = 514,
+          width = 376,
+          height = 458,
           rotation = 0,
-          gid = 625,
+          gid = 623,
           visible = true,
           properties = {
             ["light"] = true,
-            ["light_alpha"] = 0.1,
-            ["light_color"] = "#ffffffff",
+            ["light_alpha"] = 0.2,
+            ["light_color"] = "#ff7ffaff",
+            ["light_dust"] = true,
             ["light_type"] = 1
           }
         },
         {
-          id = 63,
-          name = "texturescroller",
+          id = 68,
+          name = "",
           type = "",
-          shape = "point",
-          x = -50,
-          y = -60,
-          width = 0,
-          height = 0,
+          shape = "rectangle",
+          x = 554,
+          y = 514,
+          width = 376,
+          height = 458,
           rotation = 0,
+          gid = 623,
           visible = true,
           properties = {
-            ["type"] = "hsv"
+            ["light"] = true,
+            ["light_alpha"] = 0.2,
+            ["light_color"] = "#ff7ffaff",
+            ["light_dust"] = true,
+            ["light_type"] = 1
           }
-        },
-        {
-          id = 64,
-          name = "filter",
-          type = "",
-          shape = "point",
-          x = -130,
-          y = 100.001,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["type"] = "hsv2"
-          }
-        },
-        {
-          id = 65,
-          name = "churchfog",
-          type = "",
-          shape = "point",
-          x = -90,
-          y = 180,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {}
         }
       }
     },
@@ -1105,7 +1064,51 @@ return {
       parallaxx = 1,
       parallaxy = 1,
       properties = {},
-      objects = {}
+      objects = {
+        {
+          id = 69,
+          name = "texturescroller",
+          type = "",
+          shape = "point",
+          x = -50,
+          y = -120,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["type"] = "hsv"
+          }
+        },
+        {
+          id = 70,
+          name = "filter",
+          type = "",
+          shape = "point",
+          x = -130,
+          y = 40.001,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["type"] = "hsv2"
+          }
+        },
+        {
+          id = 71,
+          name = "churchfog",
+          type = "",
+          shape = "point",
+          x = -90,
+          y = 120,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
+      }
     }
   }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="26" height="21" tilewidth="40" tileheight="40" infinite="0" nextlayerid="19" nextobjectid="66">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="26" height="21" tilewidth="40" tileheight="40" infinite="0" nextlayerid="19" nextobjectid="72">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -361,14 +361,6 @@ THE DEOXYNN, WHO LIES ON COLD GROUND.</property>
   </object>
  </objectgroup>
  <objectgroup id="10" name="objects_lightarea">
-  <object id="43" gid="625" x="80" y="890" width="160" height="720">
-   <properties>
-    <property name="light" type="bool" value="true"/>
-    <property name="light_alpha" type="float" value="0.1"/>
-    <property name="light_color" type="color" value="#ffffffff"/>
-    <property name="light_type" type="int" value="1"/>
-   </properties>
-  </object>
   <object id="48" gid="625" x="320" y="890" width="160" height="720">
    <properties>
     <property name="light" type="bool" value="true"/>
@@ -385,29 +377,40 @@ THE DEOXYNN, WHO LIES ON COLD GROUND.</property>
     <property name="light_type" type="int" value="1"/>
    </properties>
   </object>
-  <object id="51" gid="625" x="800" y="890" width="160" height="720">
+  <object id="67" gid="623" x="-126" y="514" width="376" height="458">
    <properties>
     <property name="light" type="bool" value="true"/>
-    <property name="light_alpha" type="float" value="0.1"/>
-    <property name="light_color" type="color" value="#ffffffff"/>
+    <property name="light_alpha" type="float" value="0.2"/>
+    <property name="light_color" type="color" value="#ff7ffaff"/>
+    <property name="light_dust" type="bool" value="true"/>
     <property name="light_type" type="int" value="1"/>
    </properties>
   </object>
-  <object id="63" name="texturescroller" x="-50" y="-60">
+  <object id="68" gid="623" x="554" y="514" width="376" height="458">
+   <properties>
+    <property name="light" type="bool" value="true"/>
+    <property name="light_alpha" type="float" value="0.2"/>
+    <property name="light_color" type="color" value="#ff7ffaff"/>
+    <property name="light_dust" type="bool" value="true"/>
+    <property name="light_type" type="int" value="1"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="7" name="objects_overlay">
+  <object id="69" name="texturescroller" x="-50" y="-120">
    <properties>
     <property name="type" value="hsv"/>
    </properties>
    <point/>
   </object>
-  <object id="64" name="filter" x="-130" y="100.001">
+  <object id="70" name="filter" x="-130" y="40.001">
    <properties>
     <property name="type" value="hsv2"/>
    </properties>
    <point/>
   </object>
-  <object id="65" name="churchfog" x="-90" y="180">
+  <object id="71" name="churchfog" x="-90" y="120">
    <point/>
   </object>
  </objectgroup>
- <objectgroup id="7" name="objects_overlay"/>
 </map>
