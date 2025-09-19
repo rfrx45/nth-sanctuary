@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="26" height="18" tilewidth="40" tileheight="40" infinite="0" nextlayerid="17" nextobjectid="63">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="26" height="21" tilewidth="40" tileheight="40" infinite="0" nextlayerid="19" nextobjectid="63">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -11,8 +11,11 @@
  <tileset firstgid="583" source="../../tilesets/castle.tsx"/>
  <tileset firstgid="623" source="../../tilesets/light_areas.tsx"/>
  <tileset firstgid="629" source="../../tilesets/church_objects.tsx"/>
- <layer id="14" name="tiles_parallax" width="26" height="18" parallaxx="0.6">
+ <layer id="14" name="tiles_parallax" width="26" height="21" parallaxx="0.6">
   <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,49,0,0,49,0,0,49,0,0,49,0,0,49,0,0,49,0,0,49,0,0,49,0,0,
 0,0,55,0,0,55,0,0,55,0,0,55,0,0,55,0,0,55,0,0,55,0,0,55,0,0,
@@ -34,16 +37,18 @@
 </data>
  </layer>
  <objectgroup id="12" name="objects_parallax" parallaxx="0.8">
-  <object id="53" gid="629" x="0" y="840" width="400" height="578"/>
-  <object id="55" gid="633" x="230" y="1340" width="640" height="1600"/>
-  <object id="58" gid="629" x="600" y="850" width="400" height="578"/>
-  <object id="62" gid="633" x="290" y="-570" width="640" height="1600"/>
+  <object id="53" gid="629" x="0" y="960" width="400" height="578"/>
+  <object id="55" gid="633" x="230" y="1320" width="640" height="1600"/>
+  <object id="58" gid="629" x="600" y="970" width="400" height="578"/>
  </objectgroup>
  <objectgroup id="13" name="objects_parallax_fade">
-  <object id="59" gid="637" x="1200" y="900" width="900" height="1200" rotation="270"/>
+  <object id="59" gid="637" x="1200" y="1020" width="900" height="1200" rotation="270"/>
  </objectgroup>
- <layer id="11" name="roomglow_dark_bg" width="26" height="18" visible="0">
+ <layer id="11" name="roomglow_dark_bg" width="26" height="21" visible="0">
   <data encoding="csv">
+593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,
+593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,
+593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,
 593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,
 593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,
 593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,
@@ -64,11 +69,39 @@
 593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593,593
 </data>
  </layer>
- <layer id="15" name="Tile Layer 7" width="26" height="18">
+ <layer id="17" name="Tile Layer 9" width="26" height="21">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="15" name="Tile Layer 7" width="26" height="21">
+  <data encoding="csv">
+133,133,133,133,133,133,133,0,0,0,0,0,0,0,0,0,0,0,0,0,0,133,133,133,0,0,
+133,133,133,133,133,133,133,0,0,0,0,0,0,0,0,0,0,0,0,0,0,133,133,133,0,0,
+133,133,133,133,133,133,133,0,0,0,0,0,0,0,0,0,0,0,0,0,0,133,133,133,0,0,
+133,133,133,133,133,133,133,0,0,0,0,0,0,0,0,0,0,0,0,0,0,133,133,133,0,0,
+133,133,133,133,133,133,133,0,0,0,0,0,0,0,0,0,0,0,0,0,0,133,133,133,0,0,
+133,133,133,133,133,133,133,0,0,0,0,0,0,0,0,0,0,0,0,0,0,133,133,133,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -86,8 +119,36 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="16" name="Tile Layer 8" width="26" height="18">
+ <layer id="18" name="tile_winoffset" width="26" height="21" offsetx="20" offsety="0">
   <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,136,137,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,136,137,0,0,0,
+0,0,0,0,142,143,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,142,143,0,0,0,
+0,0,0,0,148,149,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,148,149,0,0,0,
+0,0,0,0,154,155,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,154,155,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="16" name="Tile Layer 8" width="26" height="21">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -108,8 +169,11 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="3" name="Tile Layer 2" width="26" height="18" opacity="0.4" parallaxx="1.1" parallaxy="0.6">
+ <layer id="3" name="Tile Layer 2" width="26" height="21" opacity="0.4" parallaxx="1.1" parallaxy="0.6">
   <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -130,11 +194,14 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="1" name="Tile Layer 1" width="26" height="18">
+ <layer id="1" name="Tile Layer 1" width="26" height="21">
   <data encoding="csv">
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+382,383,384,343,382,383,384,343,0,0,0,0,0,0,0,0,0,0,0,0,343,382,383,384,343,0,
+388,389,390,349,388,389,390,349,0,0,0,0,0,0,0,0,0,0,0,0,349,388,389,390,349,0,
+394,395,396,355,394,395,396,355,0,0,0,0,0,0,0,0,0,0,0,0,355,394,395,396,355,0,
+400,401,402,361,400,401,402,361,0,0,0,0,0,0,0,0,0,0,0,0,361,400,401,402,361,0,
+406,407,408,361,406,407,408,361,0,0,0,0,0,0,0,0,0,0,0,0,361,406,407,408,361,0,
+576,576,576,367,576,576,576,367,576,576,576,367,576,576,576,576,576,576,576,576,367,576,576,576,367,0,
 73,73,73,73,73,73,73,73,73,73,73,73,73,73,73,73,73,73,73,73,73,73,73,73,73,0,
 73,73,73,73,73,73,73,73,73,73,73,73,73,73,73,73,73,73,73,73,73,73,73,73,73,0,
 79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,73,73,73,0,
@@ -152,8 +219,11 @@
 0,0,0,0,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79
 </data>
  </layer>
- <layer id="6" name="Tile Layer 3" width="26" height="18">
+ <layer id="6" name="Tile Layer 3" width="26" height="21">
   <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -174,8 +244,11 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="9" name="roomglow_dark" width="26" height="18" visible="0">
+ <layer id="9" name="roomglow_dark" width="26" height="21" visible="0">
   <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -197,53 +270,53 @@
 </data>
  </layer>
  <objectgroup color="#ff00ff" id="8" name="collision" locked="1">
-  <object id="14" x="0" y="80" width="1040" height="40"/>
-  <object id="15" x="0" y="200" width="880" height="80"/>
-  <object id="16" x="1000" y="120" width="40" height="480"/>
-  <object id="17" x="280" y="520" width="720" height="80"/>
-  <object id="18" x="120" y="400" width="40" height="320"/>
-  <object id="19" x="160" y="680" width="880" height="40"/>
-  <object id="20" x="280" y="400" width="200" height="80"/>
-  <object id="21" x="600" y="280" width="280" height="120"/>
-  <object id="22" x="160" y="360" width="120" height="40"/>
-  <object id="23" x="480" y="360" width="120" height="40"/>
-  <object id="24" x="280" y="480" width="200" height="40"/>
+  <object id="14" x="0" y="200" width="1040" height="40"/>
+  <object id="15" x="0" y="320" width="880" height="80"/>
+  <object id="16" x="1000" y="240" width="40" height="480"/>
+  <object id="17" x="280" y="640" width="720" height="80"/>
+  <object id="18" x="120" y="520" width="40" height="320"/>
+  <object id="19" x="160" y="800" width="880" height="40"/>
+  <object id="20" x="280" y="520" width="200" height="80"/>
+  <object id="21" x="600" y="400" width="280" height="120"/>
+  <object id="22" x="160" y="480" width="120" height="40"/>
+  <object id="23" x="480" y="480" width="120" height="40"/>
+  <object id="24" x="280" y="600" width="200" height="40"/>
  </objectgroup>
  <objectgroup id="2" name="markers">
-  <object id="1" name="entry" x="40" y="160">
+  <object id="1" name="entry" x="40" y="280">
    <point/>
   </object>
-  <object id="2" name="spawn" x="720" y="440">
+  <object id="2" name="spawn" x="720" y="560">
    <point/>
   </object>
-  <object id="34" name="entry2" x="1000" y="640">
+  <object id="34" name="entry2" x="1000" y="760">
    <point/>
   </object>
-  <object id="39" name="targ" x="750" y="360">
+  <object id="39" name="targ" x="750" y="480">
    <point/>
   </object>
  </objectgroup>
  <objectgroup id="5" name="objects_party">
-  <object id="3" name="climbentry" x="480" y="400" width="120" height="40">
+  <object id="3" name="climbentry" x="480" y="520" width="120" height="40">
    <properties>
     <property name="area" type="object" value="5"/>
    </properties>
   </object>
-  <object id="5" name="climbarea" x="480" y="280" width="120" height="120"/>
-  <object id="6" name="climbarea" x="320" y="280" width="120" height="120"/>
-  <object id="7" name="climbarea" x="160" y="280" width="120" height="120"/>
-  <object id="8" name="climbentry" x="160" y="400" width="120" height="40">
+  <object id="5" name="climbarea" x="480" y="400" width="120" height="120"/>
+  <object id="6" name="climbarea" x="320" y="400" width="120" height="120"/>
+  <object id="7" name="climbarea" x="160" y="400" width="120" height="120"/>
+  <object id="8" name="climbentry" x="160" y="520" width="120" height="40">
    <properties>
     <property name="area" type="object" value="7"/>
    </properties>
   </object>
-  <object id="27" name="transition" x="-40" y="120" width="40" height="80">
+  <object id="27" name="transition" x="-40" y="240" width="40" height="80">
    <properties>
     <property name="map" value="base_sanctum_center"/>
     <property name="marker" value="entry_east"/>
    </properties>
   </object>
-  <object id="29" name="npc" x="880" y="650">
+  <object id="29" name="npc" x="880" y="770">
    <properties>
     <property name="actor" value="jamm"/>
     <property name="cutscene" value="primary.jamm"/>
@@ -251,19 +324,19 @@
    </properties>
    <point/>
   </object>
-  <object id="32" name="transition" x="1040" y="600" width="40" height="80">
+  <object id="32" name="transition" x="1040" y="720" width="40" height="80">
    <properties>
     <property name="map" value="base_east2"/>
     <property name="marker" value="entry"/>
    </properties>
   </object>
-  <object id="35" name="roomglow" x="40" y="40">
+  <object id="35" name="roomglow" x="40" y="160">
    <properties>
     <property name="prophecy" type="bool" value="true"/>
    </properties>
    <point/>
   </object>
-  <object id="36" name="prophecy" x="600" y="400" width="280" height="120">
+  <object id="36" name="prophecy" x="600" y="520" width="280" height="120">
    <properties>
     <property name="fade" type="bool" value="true"/>
     <property name="no_back" type="bool" value="true"/>
@@ -278,7 +351,7 @@ THE DEOXYNN, WHO LIES ON COLD GROUND.</property>
     <property name="txt_offy" type="float" value="30"/>
    </properties>
   </object>
-  <object id="38" name="cameratarget" x="600" y="400" width="280" height="120">
+  <object id="38" name="cameratarget" x="600" y="520" width="280" height="120">
    <properties>
     <property name="lockx" type="bool" value="true"/>
     <property name="locky" type="bool" value="true"/>
@@ -288,7 +361,7 @@ THE DEOXYNN, WHO LIES ON COLD GROUND.</property>
   </object>
  </objectgroup>
  <objectgroup id="10" name="objects_lightarea">
-  <object id="43" gid="625" x="80" y="770" width="160" height="720">
+  <object id="43" gid="625" x="80" y="890" width="160" height="720">
    <properties>
     <property name="light" type="bool" value="true"/>
     <property name="light_alpha" type="float" value="0.1"/>
@@ -296,7 +369,7 @@ THE DEOXYNN, WHO LIES ON COLD GROUND.</property>
     <property name="light_type" type="int" value="1"/>
    </properties>
   </object>
-  <object id="48" gid="625" x="320" y="770" width="160" height="720">
+  <object id="48" gid="625" x="320" y="890" width="160" height="720">
    <properties>
     <property name="light" type="bool" value="true"/>
     <property name="light_alpha" type="float" value="0.1"/>
@@ -304,7 +377,7 @@ THE DEOXYNN, WHO LIES ON COLD GROUND.</property>
     <property name="light_type" type="int" value="1"/>
    </properties>
   </object>
-  <object id="50" gid="625" x="560" y="770" width="160" height="720">
+  <object id="50" gid="625" x="560" y="890" width="160" height="720">
    <properties>
     <property name="light" type="bool" value="true"/>
     <property name="light_alpha" type="float" value="0.1"/>
@@ -312,7 +385,7 @@ THE DEOXYNN, WHO LIES ON COLD GROUND.</property>
     <property name="light_type" type="int" value="1"/>
    </properties>
   </object>
-  <object id="51" gid="625" x="800" y="770" width="160" height="720">
+  <object id="51" gid="625" x="800" y="890" width="160" height="720">
    <properties>
     <property name="light" type="bool" value="true"/>
     <property name="light_alpha" type="float" value="0.1"/>
@@ -321,21 +394,5 @@ THE DEOXYNN, WHO LIES ON COLD GROUND.</property>
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="7" name="objects_overlay">
-  <object id="11" name="texturescroller" x="-40" y="-80">
-   <properties>
-    <property name="type" value="hsv"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="12" name="filter" x="-120" y="80.0003">
-   <properties>
-    <property name="type" value="hsv2"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="13" name="churchfog" x="-80" y="160">
-   <point/>
-  </object>
- </objectgroup>
+ <objectgroup id="7" name="objects_overlay"/>
 </map>
