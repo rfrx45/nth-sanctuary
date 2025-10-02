@@ -37,8 +37,9 @@ function character:init()
     -- Spells
     self:addSpell("rude_buster")
     if Game.chapter >= 2 then
-        self:addSpell("ultimate_heal")
+        --self:addSpell("ultimate_heal")
     end
+    self:addSpell("better_heal")
 
     -- Current health (saved to the save file)
     if Game.chapter == 1 then
