@@ -45,6 +45,28 @@ function Mod:updateLightBeams(alpha)
 		value.alpha = Utils.lerp(0.1, 1, alpha)
 	end
 end
+
+function Mod:onTextSound(sound, node)
+    if sound == "3d" then
+        local ranNum = love.math.random(1, 7)
+        if ranNum == 1 then
+            Assets.playSound("voice/chops/t1")
+        elseif ranNum == 2 then
+            Assets.playSound("voice/chops/t2")
+        elseif ranNum == 3 then
+            Assets.playSound("voice/chops/t3")
+        elseif ranNum == 4 then
+            Assets.playSound("voice/chops/t4")
+        elseif ranNum == 5 then
+            Assets.playSound("voice/chops/t5")
+        elseif ranNum == 6 then
+            Assets.playSound("voice/chops/t6")
+        elseif ranNum == 7 then
+            Assets.playSound("voice/chops/t7")
+        end
+        return true
+    end
+end
 --[==[
 function Mod:preInit()
     ---@return string|number[][]
