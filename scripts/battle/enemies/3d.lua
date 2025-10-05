@@ -1,6 +1,6 @@
-local Dummy, super = Class(EnemyBattler)
+local ThreeDPrism, super = Class(EnemyBattler)
 
-function Dummy:init()
+function ThreeDPrism:init()
     super.init(self)
 
     -- Enemy name
@@ -12,14 +12,14 @@ function Dummy:init()
     self.max_health = 1
     self.health = 999999
     -- Enemy attack (determines bullet damage)
-    self.attack = 1
+    self.attack = 40
     -- Enemy defense (usually 0)
     self.defense = -100
     -- Enemy reward
     self.money = 100
 
     -- Mercy given when sparing this enemy before its spareable (20% for basic enemies)
-    self.spare_points = 20
+    self.spare_points = 0
 
     -- List of possible wave ids, randomly picked each turn
     self.waves = {
@@ -42,42 +42,28 @@ function Dummy:init()
 
     -- Text randomly displayed at the bottom of the screen each turn
     self.text = {
-        "Placeholder Text",
-        "Spinning and Spinning and Spinning and Spinning and Spinning and Spinning and Spinning and",
-        "Too any excess vacation days? Take a goddamn vacation straight to [shake:2][color:red]HELL",
+        "* Placeholder Text",
+        "* Spinning and Spinning and Spinning and Spinning and Spinning and Spinning and Spinning and",
+        "* Too many excess vacation days? Take a goddamn vacation straight to [shake:2][color:red]HELL",
         "[font:main_mono,64]Hello",
-        "woa",
+        "* woa",
     }
     -- Text displayed at the bottom of the screen when the enemy has low health
     self.low_health_text = "* damn he dyin"
 
+    self:getAct("Check").description = "Useless\nanalysis"
     -- Register act called "Smile"
-    self:registerAct("Smile")
-    -- Register party act with Ralsei called "Tell Story"
-    -- (second argument is description, usually empty)
-    self:registerAct("Tell Story", "", {"ralsei"})
+    self:registerAct("Overclock", "Speed up", nil, 2)
 end
 
-function Dummy:onAct(battler, name)
-    if name == "Smile" then
-        -- Give the enemy 100% mercy
-        self:addMercy(100)
-        -- Change this enemy's dialogue for 1 turn
-        self.dialogue_override = "... ^^"
-        -- Act text (since it's a list, multiple textboxes)
-        return {
-            "* You smile.[wait:5]\n* The dummy smiles back.",
-            "* It seems the dummy just wanted\nto see you happy."
-        }
-
-    elseif name == "Tell Story" then
-        -- Loop through all enemies
-        for _, enemy in ipairs(Game.battle.enemies) do
-            -- Make the enemy tired
-            enemy:setTired(true)
-        end
-        return "* You and Ralsei told the dummy\na bedtime story.\n* The enemies became [color:blue]TIRED[color:reset]..."
-
+function ThreeDPrism:onAct(battler, name)
+    if name == "Overclock" then
+		if Game.battle.encounter.overclock then
+			return "* You tried to go even faster...[wait:5]\n* But Kris didn't want to become overexerted."
+		else
+			Game.battle.encounter.overclock = true
+			return "* Kris raised their adrenaline levels!\n* The SOUL moves faster for one turn."
+		end
     elseif name == "Standard" then --X-Action
         -- Give the enemy 50% mercy
         self:addMercy(50)
@@ -99,4 +85,4 @@ function Dummy:onAct(battler, name)
     return super.onAct(self, battler, name)
 end
 
-return Dummy
+return ThreeDPrism
