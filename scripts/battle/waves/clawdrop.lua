@@ -39,7 +39,7 @@ function Aiming:onStart()
 			swipe_width = swipe_width + 40 - 10 * self.sameattack
 		end
 		local aim_override = 0
-		local side = TabkeUtils.pick({-1, 1})
+		local side = TableUtils.pick({-1, 1})
 		local xx, yy, tempangle
 		if self.sameattacker < 1 then
 			xx = Game.battle.arena.x - 40 + love.math.random(80)
