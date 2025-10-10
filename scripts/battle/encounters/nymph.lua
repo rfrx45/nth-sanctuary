@@ -1,6 +1,6 @@
-local Dummy, super = Class(Encounter)
+local NymphSpawn, super = Class(Encounter)
 
-function Dummy:init()
+function NymphSpawn:init()
     super.init(self)
 
     -- Text displayed at the bottom of the screen at the start of the encounter
@@ -9,18 +9,29 @@ function Dummy:init()
 * (    Gain reduced outside of [color:green][shake:10]-[shake:0] [color:reset])
 ]==]
 
-    -- Battle music ("battle" is rude buster)
     self.music = "titan_spawn2"
-    -- Enables the purple grid battle background
     self.background = true
 
-    self.reduced_tp = true
-
-    -- Add the dummy enemy to the encounter
     self:addEnemy("nymph")
+	
+    self.toggle_shadow_mantle_all_bullets = true
+    self.banish_goal = nil
 
-    --- Uncomment this line to add another!
-    --self:addEnemy("dummy")
+    self.reduced_tension = true
+    self.light_size = 48
+    self.purified = false
+    self.difficulty = 1
 end
 
-return Dummy
+function NymphSpawn:onTurnEnd() 
+    self.difficulty = self.difficulty + 1
+end
+
+function NymphSpawn:beforeStateChange(old, new) 
+    if (new == "DEFENDING" or old == "CUTSCENE")and self.purified then
+       -- self:explode()
+            Game.battle:setState("VICTORY")
+    end
+end
+
+return NymphSpawn

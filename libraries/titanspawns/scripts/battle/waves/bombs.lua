@@ -24,7 +24,7 @@ function SpawnTest:onStart()
     if self.difficulty >= 3 then
         self.timer:everyInstant(15 / 3, function()
             local tempdir = MathUtils.random(360);
-            local tempdist = 150 + Utils.random(50);
+            local tempdist = 150 + MathUtils.random(50);
             local arena = Game.battle.arena
 
             local spawn = self:spawnBullet("redshape", arena.x + self:lengthdir_x(tempdist, tempdir),

@@ -22,19 +22,26 @@ function TitanSpawn:init()
 
     --self.check = { "AT 30 DF 200\nA shard of fear. Appears in places of deep dark.", "Expose it to LIGHT... and gather COURAGE to gain TP.", "Then, \"[color:yellow]BANISH[color:reset]\" it!" }
 
+
     self.text = {
         "* You hear your heart beating in your ears.",
         "* When did you start being yourself?",
         "* It sputtered in a voice like crushed glass.",
-        -- "* Ralsei mutters to himself to stay calm.",
-        "* Smells like adrenaline."
+        "* Smells like adrenaline.",
+        --"* There's a heart beating where your soul should be!"
+        --"* Your smile reaches your eyes."
+
     }
+
+    if Game:hasPartyMember("ralsei") then
+        table.insert(self.text, "* Ralsei mutters to himself to stay calm.")
+    end
 
     self:registerAct("Brighten", "Powerup\nlight", "all", 4)
 
-    self.banish_amt =  64
+    self.banish_amt = 64
 
-    self:registerAct("Banish", "Defeat\nEnemy", nil,  self.banish_amt)
+    self:registerAct("Banish", "Defeat\nEnemy", nil, self.banish_amt)
 
     self.dialogue_override = nil
     self.t_siner = 0
@@ -42,7 +49,16 @@ function TitanSpawn:init()
     self.tired_percentage = -1
     self.can_freeze = false
 
+    -- hacky ik but just change this index with you update the banish act to include more acts or wtv
+    self.banish_act_index = 3
+
+
+    --custom slain message made for on KILL
     self.toggle_slain_message = true
+
+    -- alternate slapped_shitck annimssssss
+    self.slapped_shitck = false
+    self.count_down = 0
 end
 
 function TitanSpawn:getGrazeTension()
@@ -51,11 +67,30 @@ end
 
 function TitanSpawn:update()
     super.update(self)
-    if (Game.battle.state == "MENUSELECT") and (Game.tension >=  self.banish_amt) then
+
+    if self.count_down > 1 then
+        self.count_down = self.count_down - (1 * DTMULT)
+        local d = self.sprite:addFX(ShaderFX("wave", {
+            ["wave_sine"] = function() return Kristal.getTime() * 30 end,
+            ["wave_mag"] = self.count_down,
+            ["wave_height"] = self.count_down,
+            ["texsize"] = { SCREEN_WIDTH, SCREEN_HEIGHT }
+        }), "wave")
+        Game.battle.timer:after(0.05, function()
+            self.sprite:removeFX("wave")
+        end)
+
+        if self.count_down <= 1 then
+            self.count_down = 1
+        end
+    end
+
+
+    if (Game.battle.state == "MENUSELECT") and (Game.tension >= self.banish_amt) then
         self.t_siner = self.t_siner + (1 * DTMULT)
-        if Game.battle.menu_items[3] then
-            if Game.battle.menu_items[3].name == "Banish" then
-                Game.battle.menu_items[3].color =
+        if Game.battle.menu_items[self.banish_act_index] then
+            if Game.battle.menu_items[self.banish_act_index].name == "Banish" then
+                Game.battle.menu_items[self.banish_act_index].color =
                     function()
                         return (ColorUtils.mergeColor(COLORS.yellow, COLORS.white, 0.5 + (math.sin(self.t_siner / 4) * 0.5)))
                     end
@@ -88,26 +123,29 @@ function TitanSpawn:onHurt(damage, battler)
 
     Assets.playSound("snd_spawn_weaker")
 
+    if self.slapped_shitck then
+        self.count_down = 30
+    else
+        self.sprite:addFX(ShaderFX("wave", {
+            ["wave_sine"] = function() return Kristal.getTime() * 30 end,
+            ["wave_mag"] = 2,
+            ["wave_height"] = 0.7,
+            ["texsize"] = { SCREEN_WIDTH, SCREEN_HEIGHT }
+        }), "wave")
 
-    self.sprite:addFX(ShaderFX("wave", {
-        ["wave_sine"] = function() return Kristal.getTime() * 30 end,
-        ["wave_mag"] = 2,
-        ["wave_height"] = 0.7,
-        ["texsize"] = { SCREEN_WIDTH, SCREEN_HEIGHT }
-    }), "wave")
 
+        self.sprite:addFX(ShaderFX("wave", {
+            ["wave_sine"] = function() return Kristal.getTime() * 30 end,
+            ["wave_mag"] = 1,
+            ["wave_height"] = 2,
+            ["texsize"] = { SCREEN_WIDTH, SCREEN_HEIGHT }
+        }), "wave")
 
-    self.sprite:addFX(ShaderFX("wave", {
-        ["wave_sine"] = function() return Kristal.getTime() * 30 end,
-        ["wave_mag"] = 1,
-        ["wave_height"] = 2,
-        ["texsize"] = { SCREEN_WIDTH, SCREEN_HEIGHT }
-    }), "wave")
-
-    Game.battle.timer:after(1.2, function()
-        self.sprite:removeFX("wave")
-        self.sprite:removeFX("wave")
-    end)
+        Game.battle.timer:after(1.2, function()
+            self.sprite:removeFX("wave")
+            self.sprite:removeFX("wave")
+        end)
+    end
 end
 
 function TitanSpawn:onTurnEnd()
@@ -115,7 +153,7 @@ function TitanSpawn:onTurnEnd()
 end
 
 function TitanSpawn:getEncounterText()
-    if (Game.tension >=  self.banish_amt) then
+    if (Game.tension >= self.banish_amt) then
         return "* The atmosphere feels tense...\n* (You can use [color:yellow]BANISH[color:reset]!)"
     end
     return super.getEncounterText(self)
@@ -129,7 +167,6 @@ function TitanSpawn:onShortAct(battler, name)
 end
 
 function TitanSpawn:onAct(battler, name)
-    
     if name == "Brighten" then
         battler:flash()
         Game.battle.timer:after(7 / 30, function()
@@ -157,8 +194,7 @@ function TitanSpawn:onAct(battler, name)
             cutscene:text("* " .. battler.chara:getName() .. "'s SOUL emitted a brilliant light!")
             battler:flash()
             cutscene:playSound("revival")
-
-            cutscene:playSound("snd_great_shine", 1, 1.2)
+            cutscene:playSound("snd_great_shine", 1, 0.8)
 
             local bx, by = Game.battle:getSoulLocation()
 
@@ -199,10 +235,15 @@ function TitanSpawn:onAct(battler, name)
                 cutscene:wait(1 / step / 45)
             end
 
-            cutscene:wait(50 / 30)
+            cutscene:wait(30 / 30)
 
             -- soul:remove()
-            fade(0.04, { 1, 1, 1 })
+            fade(0.06, { 1, 1, 1 })
+
+
+            if Game.battle.encounter.toggle_smoke then
+                Game.battle.encounter.darkness_controller:remove()
+            end
             for _, enemy in ipairs(Game.battle.enemies) do
                 enemy.alpha = 0
             end
@@ -235,14 +276,15 @@ function TitanSpawn:onAct(battler, name)
                 " tried to \"[color:yellow]ACT[color:reset]\"...\n* But, the enemy couldn't understand!")
         end)
         return
-
     elseif name == "Check" then
         if Game:getTension() >= self.banish_amt then
-            return {"* TITAN SPAWN - AT 30 DEF 200\n* A shard of fear. Appears in\nplaces of deep dark.", "* The atmosphere feels tense...\n* (You can use \"[color:yellow]BANISH[color:reset]\"!)"}
+            return { "* TITAN SPAWN - AT 30 DEF 200\n* A shard of fear. Appears in\nplaces of deep dark.",
+                "* The atmosphere feels tense...\n* (You can use \"[color:yellow]BANISH[color:reset]\"!)" }
         else
-            return { "* TITAN SPAWN - AT 30 DF 200\n* A shard of fear. Appears in\nplaces of deep dark.", "Expose it to LIGHT... and gather COURAGE to gain TP.", "Then, \"[color:yellow]BANISH[color:reset]\" it!" }
+            return { "* TITAN SPAWN - AT 30 DF 200\n* A shard of fear. Appears in\nplaces of deep dark.",
+                "Expose it to LIGHT... and gather COURAGE to gain TP.", "Then, \"[color:yellow]BANISH[color:reset]\" it!" }
+        end
     end
-end
     return super:onAct(self, battler, name)
 end
 
@@ -256,9 +298,10 @@ end
 
 function TitanSpawn:onDefeatFatal(damage, battler)
     super.onDefeatFatal(self, damage, battler)
+    
     Game:addFlag("slain", 1)
     if self.toggle_slain_message then
-    self:recruitMessage("slain")
+        self:recruitMessage("slain")
     end
     if self.sprite.sprite == "titanspawn_original_idle/spr_titan_spawn_idle" then
         self:setSprite("titanspawn_original_idle/spr_titan_spawn_hurt")

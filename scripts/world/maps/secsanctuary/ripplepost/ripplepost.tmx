@@ -8,7 +8,7 @@
   <property name="music" value="second_church"/>
   <property name="name" value="Second Sanctuary - Main"/>
  </properties>
- <tileset firstgid="1" source="../../tilesets/bg_dw_church_tileset_new.tsx"/>
+ <tileset firstgid="1" source="../../../tilesets/bg_dw_church_tileset_new.tsx"/>
  <layer id="8" name="Tile Layer 4" width="26" height="18">
   <data encoding="csv">
 539,539,539,539,539,539,539,539,539,539,539,539,539,539,539,539,539,539,539,539,539,539,539,539,539,539,

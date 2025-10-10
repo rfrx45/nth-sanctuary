@@ -140,8 +140,8 @@ function blown_bullet:update()
         end
 
         --[[for aa = 0, 4 do
-            local angle = MathUtils.angle(self.x, self.y, Game.battle.soul.x, Game.battle.soul.y) - 60 + (30 * aa) + Utils.random(-5, 5)
-            local speed = 1.5 + MathItils.random(1.5)
+            local angle = MathUtils.angle(self.x, self.y, Game.battle.soul.x, Game.battle.soul.y) - 60 + (30 * aa) + MathUtils.random(-5, 5)
+            local speed = 1.5 + MathUtils.random(1.5)
 
             -- spawnBullet arguments: (bullet_id, x, y, angle, speed)
             local bullet =  self.wave:spawnBullet("eye_fade_area_denial", self.x, self.y)
@@ -229,7 +229,7 @@ function blown_bullet:update()
     self.dist = MathUtils.dist(self.x, self.y, Game.battle.soul.x, Game.battle.soul.y)
     if (self.dist < self.inaccurate_distance_calculation_variable + 8) then
         self.light = MathUtils.approach(self.light, 1, self.light_rate);
-        self.speed_calc = MathUtils.approach(self.speed_calc, 0.7 + (1 - self.light),
+        self.speed_calc = Utils.approach(self.speed_calc, 0.7 + (1 - self.light),
             0.15 * self.speedfactor * self.speed_max_multiplier);
         self.image_size = 1
     else
@@ -283,8 +283,8 @@ function blown_bullet:update()
 
 
     if self.shakeme then
-        self.xoff = TableUtils.pick { -1, 0, 1 }
-        self.yoff = TableUtils.pick { -1, 0, 1 }
+        self.xoff = Utils.pick { -1, 0, 1 }
+        self.yoff = Utils.pick { -1, 0, 1 }
     end
 
 

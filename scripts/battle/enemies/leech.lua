@@ -34,10 +34,15 @@ function LeechSpawn:init()
 
     -- Text randomly displayed at the bottom of the screen each turn
     self.text = {
-        "* "..Game.party[math.random(1,3)].name.." shudders in place.",
-        "* Darkness trails behind it.",
-        "* The Leech Spawn suckles on the ground. [wait:30]It... [wait:10]Doesn't get anything out of doing that."
+        "* You hear your heart beating in your ears.",
+        "* When did you start being yourself?",
+        "* It started to suckle on the ground.",
+        "* Smells like adrenaline.",
     }
+    if Game:hasPartyMember("ralsei") then
+        table.insert(self.text, "* Ralsei mutters to himself to stay calm.")
+    end
+
     -- Text displayed at the bottom of the screen when the enemy has low health
     self.low_health_text = "* It's slowing down."
 
@@ -52,6 +57,8 @@ function LeechSpawn:init()
 	
     self.tired_percentage = -1000
     self.can_freeze = false
+
+    self.banish_act_index = 3
 end
 
 function LeechSpawn:getGrazeTension()
@@ -60,11 +67,11 @@ end
 
 function LeechSpawn:update()
     super.update(self)
-    if (Game.battle.state == "MENUSELECT") and (Game.tension >=  self.banish_amt) then
+    if (Game.battle.state == "MENUSELECT") and (Game.tension >= self.banish_amt) then
         self.t_siner = self.t_siner + (1 * DTMULT)
-        if Game.battle.menu_items[3] then
-            if Game.battle.menu_items[3].name == "Banish" then
-                Game.battle.menu_items[3].color =
+        if Game.battle.menu_items[self.banish_act_index] then
+            if Game.battle.menu_items[self.banish_act_index].name == "Banish" then
+                Game.battle.menu_items[self.banish_act_index].color =
                     function()
                         return (ColorUtils.mergeColor(COLORS.yellow, COLORS.white, 0.5 + (math.sin(self.t_siner / 4) * 0.5)))
                     end
@@ -96,7 +103,7 @@ end
 
 function LeechSpawn:getEncounterText()
     if (Game.tension >=  self.banish_amt) then
-        return "* The atmosphere feels tense...\n* (You can use [color:yellow]BANISH[color:reset]!)"
+        return "* The atmosphere feels tense...\n(You can use [color:yellow]BANISH[color:reset]!)"
     end
     return super.getEncounterText(self)
 end
@@ -109,7 +116,6 @@ function LeechSpawn:onShortAct(battler, name)
 end
 
 function LeechSpawn:onAct(battler, name)
-    
     if name == "Brighten" then
         battler:flash()
         Game.battle.timer:after(7 / 30, function()
@@ -137,8 +143,7 @@ function LeechSpawn:onAct(battler, name)
             cutscene:text("* " .. battler.chara:getName() .. "'s SOUL emitted a brilliant light!")
             battler:flash()
             cutscene:playSound("revival")
-
-            cutscene:playSound("snd_great_shine", 1, 1.2)
+            cutscene:playSound("snd_great_shine", 1, 0.8)
 
             local bx, by = Game.battle:getSoulLocation()
 
@@ -179,10 +184,15 @@ function LeechSpawn:onAct(battler, name)
                 cutscene:wait(1 / step / 45)
             end
 
-            cutscene:wait(50 / 30)
+            cutscene:wait(30 / 30)
 
             -- soul:remove()
-            fade(0.04, { 1, 1, 1 })
+            fade(0.06, { 1, 1, 1 })
+
+
+            if Game.battle.encounter.toggle_smoke then
+                Game.battle.encounter.darkness_controller:remove()
+            end
             for _, enemy in ipairs(Game.battle.enemies) do
                 enemy.alpha = 0
             end
@@ -215,14 +225,13 @@ function LeechSpawn:onAct(battler, name)
                 " tried to \"[color:yellow]ACT[color:reset]\"...\n* But, the enemy couldn't understand!")
         end)
         return
-
     elseif name == "Check" then
         if Game:getTension() >= self.banish_amt then
-            return {"* LEECH SPAWN - AT 17 DF 6\n* The backend darkness that leeches off your fear.", "* The atmosphere feels tense...\n* (You can use \"[color:yellow]BANISH[color:reset]\"!)"}
+            return {"* LEECH SPAWN - AT 27 DF 160\n* The backend darkness that leeches off of your fear.", "* The atmosphere feels tense...\n* (You can use \"[color:yellow]BANISH[color:reset]\"!)"}
         else
-            return {"* LEECH SPAWN - AT 17 DF 6\n* The backend darkness that leeches off your fear.", "* Expose it to LIGHT... and gather COURAGE to gain TP.", "* Then, \"[color:yellow]BANISH[color:reset]\" it!" }
-    end
-end
+            return {"* LEECH SPAWN - AT 27 DF 160\n* The backend darkness that leeches off of your fear.", "* Expose it to LIGHT... and gather COURAGE to gain TP.", "* Then, \"[color:yellow]BANISH[color:reset]\" it!" }
+		end
+	end
     return super:onAct(self, battler, name)
 end
 

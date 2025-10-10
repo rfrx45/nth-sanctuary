@@ -1,6 +1,6 @@
-local Encounter, super = Class(Encounter)
+local LeechSpawn, super = Class(Encounter)
 
-function Encounter:init()
+function LeechSpawn:init()
     super.init(self)
 
     self.text = [==[
@@ -15,22 +15,25 @@ function Encounter:init()
     self:addEnemy("leech")
     self:addEnemy("leech")
 	
+    self.toggle_shadow_mantle_all_bullets = true
+    self.banish_goal = nil
+
     self.reduced_tension = true
     self.light_size = 48
     self.purified = false
     self.difficulty = 1
 end
 
-function Encounter:onTurnEnd() 
+function LeechSpawn:onTurnEnd() 
     self.difficulty = self.difficulty + 1
 end
 
 
-function Encounter:beforeStateChange(old, new) 
+function LeechSpawn:beforeStateChange(old, new) 
     if (new == "DEFENDING" or old == "CUTSCENE")and self.purified then
        -- self:explode()
             Game.battle:setState("VICTORY")
     end
 end
 
-return Encounter
+return LeechSpawn

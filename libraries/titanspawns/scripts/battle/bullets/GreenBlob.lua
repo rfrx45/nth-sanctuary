@@ -17,18 +17,25 @@ function TPBlob:init(x, y)
 
     self.grazed = true
     self.layer = BATTLE_LAYERS["top"]
-    self.tension_amount = 1
+    self.tension_amount = 1.6
+
+    self.enable_tension_double = false 
     self:setScale(1, 1)
+
+    if TensionBarGlow then 
+        self.enable_new_ten = true
+    end
+    
 end
 
 function TPBlob:onAdd(parent)
     super.onAdd(self, parent)
 
 
-    Assets.playSound("snd_hurt1_bc", 1, 0.5) -- it's gotta be accurate....
+    Assets.playSound("snd_hurt1_bc", 1, 0.5)
 
 
-    self.physics.direction = MathUtils.angle(self.x, self.y, Game.battle.soul.x, Game.battle.soul.y) + math.rad(180)
+    self.physics.direction = Utils.angle(self.x, self.y, Game.battle.soul.x, Game.battle.soul.y) + math.rad(180)
     self.physics.speed = self.prime_speed
 
 
@@ -41,12 +48,12 @@ function TPBlob:update()
     --Kristal.Console:log("timer: "..tostring(self.wave.timer))
     self.physics.speed = self.physics.speed * 0.85;
     if self.active_move then
-        local accel = self.acc / MathUtils.dist(self.x, self.y, Game.battle.soul.x + 10, Game.battle.soul.y + 10);
-        self.physics.direction = MathUtils.angle(self.x, self.y, Game.battle.soul.x, Game.battle.soul.y);
-        self.physics.speed = MathUtils.approach(self.physics.speed, self.max_speed, accel)
+        local accel = self.acc / Utils.dist(self.x, self.y, Game.battle.soul.x + 10, Game.battle.soul.y + 10);
+        self.physics.direction = Utils.angle(self.x, self.y, Game.battle.soul.x, Game.battle.soul.y);
+        self.physics.speed = Utils.approach(self.physics.speed, self.max_speed, accel)
     end
 
-    --[[if (MathUtils.dist(self.x, self.y, Game.battle.soul.x + 10, Game.battle.soul.y + 10) <= 20 and self.active_move) then
+    --[[if (Utils.dist(self.x, self.y, Game.battle.soul.x + 10, Game.battle.soul.y + 10) <= 20 and self.active_move) then
         self:remove()
     end]]
 
@@ -56,8 +63,17 @@ end
 function TPBlob:onCollide()
     Assets.playSound("swallow", self.size * 0.2)
     Assets.playSound("snd_eye_telegraph", self.size * 0.2, 2)
+    if self.enable_new_ten then 
+         --   Assets.playSound("face", self.size * 0.2)
+
+        Game.battle.tension_bar:flash()
+    else
     self:flashsparestars()
-    Game.battle.tension_bar:addChild(TensionBarGlow())
+    Game.battle.tension_bar:addChild(TensionBarGlowOld())
+    end
+    if self.enable_tension_double and Game.battle.turn_count >= 4 then
+        self.tension_amount = self.tension_amount * 2
+    end
     Game:giveTension(self.tension_amount)
     self:finishexplosion()
     self:remove()
@@ -92,7 +108,7 @@ function TPBlob:flashsparestars()
         star:setOrigin(0.5, 0.5)
         local dur = 10 + love.math.random(0, 5)
 
-        star:play(5 / dur)
+        star:play( 1 / (30 * (5 / dur)))
         star.layer = 999
         star.alpha = 1
 
