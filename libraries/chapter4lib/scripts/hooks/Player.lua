@@ -34,6 +34,14 @@ function Player:init(chara, x, y)
 	self.neutralcon = 0
 	self.facing = "down"
 	self.drawoffsety = 0
+	self.falling = 0
+	self.fallingspeed = 0
+	self.fall_speed_cap = 10
+	self.grabon = true
+	self.graboncon = 0
+	self.grabontimer = 0
+	self.siner = 0
+	self.exitcon = 1
 end
 
 function Player:beginClimb(last_state)
@@ -71,6 +79,7 @@ function Player:endClimb(next_state)
 end
 
 function Player:processClimbInputs()
+	self.siner = self.siner + DTMULT
 	local this_frame_directions = {}
 	local buffer_length = math.ceil(5 - (self.climbmomentum * 2))
 	if buffer_length >= 5 then
@@ -156,6 +165,137 @@ function Player:processClimbInputs()
 	self.leftbuffer = self.leftbuffer - DTMULT
 	self.rightbuffer = self.rightbuffer - DTMULT
 	self.downbuffer = self.downbuffer - DTMULT
+    if self.falling > 0 then
+		if self.falling == 1 then			
+			self:setSprite("climb/slip_fall")
+            self.sprite:setFrame(1)
+			self.fallingspeed = 0
+			self.falling = 2
+			self.neutralcon = 0
+			self.jumpchargesfx:stop()
+			self.jumpchargecon = 0
+			self.climbmomentum = 0
+			self.remx = self.x
+			self.remy = self.y
+		end
+		if self.falling == 2 then
+			Object.startCache()
+			local climbarea
+			local trigger
+			for _, event in ipairs(self.world.stage:getObjects(Event)) do
+				---@cast event Event.climbarea|Event.climbentry
+				-- TODO: Find out where these numbers come from, because it sure isn't the actor
+				local x,y = -17, -37
+				x,y = x + self.x,y + self.y
+				if self.onrotatingtower then
+					x = MathUtils.wrap(x, 0, self.world.width+1)
+				end
+				self.climb_collider.parent = self.parent
+				self.climb_collider.x, self.climb_collider.y = x, y
+				if (event.climbFallLanding) and event:collidesWith(self.climb_collider) then
+					self.falling = 0
+					self.fallingspeed = 0
+					event:climbFallLanding(self)
+				end
+			end
+			self.fallingspeed = self.fallingspeed + 0.5 * DTMULT
+			if self.fallingspeed >= self.fall_speed_cap then
+				self.fallingspeed = self.fall_speed_cap
+			end
+			if self.fallingspeed >= 20 then
+				self.naturalybias = math.min(self.naturalybias + 2 * DTMULT, 80)
+			end
+			if self.falldir == "down" then
+				self.y = self.y + math.ceil(self.fallingspeed)
+			elseif self.falldir == "right" then
+				self.x = self.x + math.ceil(self.fallingspeed)
+			elseif self.falldir == "up" then
+				self.y = self.y - math.ceil(self.fallingspeed)
+			elseif self.falldir == "left" then
+				self.x = self.x - math.ceil(self.fallingspeed)
+			end
+			self.fallingtimer = self.fallingtimer - DTMULT
+			if self.fallingtimer <= 0 then
+				if self.grabon then
+					local allowed, obj = self:canClimb(0, 0)
+					if allowed and self.y >= obj.y + 30 then
+						local grabx = self.x
+						local graby = self.y
+						self.grabx = (MathUtils.round(grabx / 40) * 40) - 20
+						self.graby = (MathUtils.round(graby / 40) * 40)
+						self.grabontimer = 15
+						self.graboncon = 1
+						self.falling = 0
+					end
+				end
+			end
+			Object.endCache()
+		end
+	end
+	if self.graboncon > 0 then
+		if self.graboncon == 1 then	
+			self:setSprite("climb/charge/down")
+            self.sprite:setFrame(3)
+			self.graboncon = 2
+		end
+		if self.graboncon == 2 then
+			Assets.stopSound("wing")
+			Assets.playSound("wing", 0.7, 0.6 + MathUtils.random(0.3))
+			if Utils.round(self.siner) % 2 == 0 then
+				local dust = Sprite("effects/slide_dust")
+				dust:play(1 / 15, false, function () dust:remove() end)
+				dust:setOrigin(0.5, 0.5)
+				dust:setScale(2, 2)
+				dust:setPosition(self.x, self.y)
+				dust.layer = self.layer - 0.01
+				dust.physics.speed_y = -3
+				dust.physics.speed_x = MathUtils.random(-1, 1)
+				self.world:addChild(dust)
+			end
+			if self.fallingspeed > 7 then
+				self.fallingspeed = 7
+			end
+			self.fallingspeed = self.fallingspeed - DTMULT
+			if self.falldir == "down" then
+				self.y = self.y + math.ceil(self.fallingspeed)
+			elseif self.falldir == "right" then
+				self.x = self.x + math.ceil(self.fallingspeed)
+			elseif self.falldir == "up" then
+				self.y = self.y - math.ceil(self.fallingspeed)
+			elseif self.falldir == "left" then
+				self.x = self.x - math.ceil(self.fallingspeed)
+			end
+			if self.fallingspeed <= 0 then
+				self.grabonclimbtimer = 0
+				self.graboncon = 3
+				self.remfalleny = self.y
+				self.remfallenx = self.x
+			end
+		end
+		if self.graboncon == 3 then	
+			self.grabonclimbtimer = self.grabonclimbtimer + DTMULT
+			local initwait = 7
+			local waittime = 8
+			if self.grabonclimbtimer >= initwait then
+				self:slideTo(self.grabx, self.graby, waittime/30, "in-out-quad")
+			end
+			if self.grabonclimbtimer >= initwait + waittime then
+				self.x = MathUtils.round(self.x / 10) * 10
+				self.y = MathUtils.round(self.y / 10) * 10
+				self.graboncon = 0  
+				if self.climb_ready_callback then
+					self:climb_ready_callback()
+					self.climb_ready_callback = nil
+				end
+				self.sprite:setFrame(MathUtils.wrap(self.sprite.frame + 1, 1, #self.sprite.frames + 1))
+				if self.sprite.sprite_options[2] ~= "climb/climb" then
+					self:setSprite("climb/climb")
+					self.sprite:setFrame(1)
+				end
+				self.neutralcon = 1
+			end
+		end
+	end
     if self.slip_delay > 0 then
 		if self.slip_delay > 2/30 and not cancelled_slip and (used_input ~= nil and lastdir ~= used_input) or (Input.down("confirm") or Input.down("cancel")) then
 			self.slip_delay = math.min(self.slip_delay, 2/30)
@@ -171,8 +311,9 @@ function Player:processClimbInputs()
                 self.climb_ready_callback = nil
             end
             self.sprite:setFrame(MathUtils.wrap(self.sprite.frame + 1, 1, #self.sprite.frames + 1))
-
-			self.neutralcon = 1
+			if self.falling <= 0 then
+				self.neutralcon = 1
+			end
             if self.sprite.sprite_options[2] ~= "climb/climb" then
                 self:setSprite("climb/climb")
                 self.sprite:setFrame(1)
@@ -407,7 +548,7 @@ function Player:doClimbJump(direction, distance)
                 end
                 self.sprite:play(0.1, true)
             else
-                self.sprite:setFrame(MathUtils.wrap(Utils.floor(self.sprite.frame + 1, 2), 1, #self.sprite.frames+1))
+                self.sprite:setFrame(MathUtils.wrap(math.floor(self.sprite.frame + 1, 2), 1, #self.sprite.frames+1))
             end
 
 			local dust_amount = 1
@@ -678,7 +819,7 @@ function Player:drawClimbReticle()
         ]]
         -- local quad = Assets.getQuad(0, 0, 22, math.floor(MathUtils.clamp(self.jumpchargetimer / self.charge_times[2], 0, 1) * 62), 22, 62)
         Draw.setColor(col)
-        local frame = Utils.clampWrap(math.floor(Kristal.getTime() * 15), 1,4)
+        local frame = MathUtils.wrap(math.floor(Kristal.getTime() * 15), 1,4)
         -- Draw.draw(Assets.getFrames("ui/climb/hint")[frame], quad, xoff/2, yoff/2, -math.rad(angle))
         love.graphics.push()
         love.graphics.translate(xoff/2, yoff/2)

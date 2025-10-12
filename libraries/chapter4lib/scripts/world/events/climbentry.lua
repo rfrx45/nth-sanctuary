@@ -63,7 +63,7 @@ function event:preClimbEnter(player)
             for i,follower in ipairs(self.world.followers) do
                 local mask = follower:getFX(id)
                 if mask then
-                    self.world.timer:tween(10/30, mask, {alpha = 1}, nil, function ()
+                    self.world.timer:tween(8/30, mask, {alpha = 1}, nil, function ()
                         follower:removeFX(mask)
                     end)
                 end

@@ -9,6 +9,7 @@ function actor:init()
         ["climb/charge"] = {0, 3},
         ["climb/slip_left"] = {0, 0},
         ["climb/slip_right"] = {0, 0},
+        ["climb/slip_fall"] = {0, 0},
         ["climb/land_left"] = {0, 0},
         ["climb/land_right"] = {0, 0},
         ["climb/jump_up"] = {0, 0},
