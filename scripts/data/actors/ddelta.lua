@@ -7,14 +7,14 @@ function actor:init()
     self.name = "Diamond Deltahedron"
 
     -- Width and height for this actor, used to determine its center
-    self.width = 20
-    self.height = 30
+    self.width = 19
+    self.height = 39
 
     -- Hitbox for this actor in the overworld (optional, uses width and height by default)
-    self.hitbox = {0, 19, 19, 10}
-
+    self.hitbox = {0, 25, 19, 14}
+	
     -- Color for this actor used in outline areas (optional, defaults to red)
-    self.color = {1, 1, 0}
+    self.color = {0.5, 1, 1}
 
     -- Whether this actor flips horizontally (optional, values are "right" or "left", indicating the flip direction)
     self.flip = nil
@@ -27,9 +27,9 @@ function actor:init()
     -- Sound to play when this actor speaks (optional)
     self.voice = "ddelta"
     -- Path to this actor's portrait for dialogue (optional)
-    self.portrait_path = "ddelta"
+    self.portrait_path = "face/ddelta"
     -- Offset position for this actor's portrait (optional)
-    self.portrait_offset = nil
+    self.portrait_offset = {-15, 0}
 
     -- Whether this actor as a follower will blush when close to the player
     self.can_blush = false
