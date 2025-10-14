@@ -186,7 +186,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="7" name="collision">
+ <objectgroup color="#0000ff" id="7" name="collision">
   <object id="6" x="80" y="240" width="240" height="120"/>
   <object id="8" x="320" y="0" width="240" height="280"/>
   <object id="9" x="640" y="0" width="200" height="280"/>

@@ -134,7 +134,8 @@ function ClimbWater:initWater()
 				if altendy == -1 then
 					Object.startCache()
 					for _,bucket in ipairs(Game.world.map:getEvents("climbwaterbucket")) do
-						local collider = Hitbox(self, 0, -self.y + 40 * i, 40, 40)
+						local xx, yy = -(Game.world.camera.x-SCREEN_WIDTH/2), -(Game.world.camera.y-SCREEN_HEIGHT/2)
+						local collider = Hitbox(self, xx, yy + 40 * i, 40, 40)
 						if bucket:collidesWith(collider) and not bucket.generator then
 							self.endy = bucket.y
 							altendy = 1

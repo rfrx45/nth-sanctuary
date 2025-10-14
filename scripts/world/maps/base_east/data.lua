@@ -9,8 +9,8 @@ return {
   height = 21,
   tilewidth = 40,
   tileheight = 40,
-  nextlayerid = 21,
-  nextobjectid = 88,
+  nextlayerid = 22,
+  nextobjectid = 99,
   properties = {
     ["border"] = "base_sanctum",
     ["music"] = "homebase"
@@ -495,6 +495,52 @@ return {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 21,
+      name = "objects_candles",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 97,
+          name = "proxycandle",
+          type = "",
+          shape = "point",
+          x = 460,
+          y = 450,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["trigger_horz"] = 200
+          }
+        },
+        {
+          id = 98,
+          name = "proxycandle",
+          type = "",
+          shape = "point",
+          x = 300,
+          y = 450,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["trigger_horz"] = 200
+          }
+        }
       }
     },
     {
