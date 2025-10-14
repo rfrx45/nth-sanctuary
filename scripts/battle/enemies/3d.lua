@@ -54,9 +54,13 @@ function ThreeDPrism:init()
     self:getAct("Check").description = "Useless\nanalysis"
     -- Register act called "Smile"
     self:registerAct("HoldBreath", "Move\nfaster", nil, 2)
-    self:registerAct("Spin", "Spin\n10%\nmercy")
+    self:registerAct("Gyrate", "Spin\n6%\nmercy")
 	
     self.progress = 0
+end
+
+function ThreeDPrism:isXActionShort(battler)
+    return true
 end
 
 function ThreeDPrism:onAct(battler, name)
@@ -67,10 +71,11 @@ function ThreeDPrism:onAct(battler, name)
 			Game.battle.encounter.holdbreath = true
 			return "* Kris held their breath.\n* Their heartbeat quickened.\n* The SOUL now moves faster."
 		end
-	elseif name == "Spin" then
-        self:addMercy(10)
-		Assets.playSound("pirouette")
-		return "* Kris spun around the third dimension!"
+	elseif name == "Gyrate" then
+        self:addMercy(6)
+        Assets.stopAndPlaySound("pirouette", 0.7, 1.1)
+        battler:setAnimation("pirouette")
+		return "* Kris spun around three-dimensionally!"
     elseif name == "Standard" then --X-Action
         -- Give the enemy 50% mercy
         self:addMercy(50)
@@ -90,6 +95,28 @@ function ThreeDPrism:onAct(battler, name)
     -- If the act is none of the above, run the base onAct function
     -- (this handles the Check act)
     return super.onAct(self, battler, name)
+end
+
+function ThreeDPrism:onShortAct(battler, name)
+    if name == "Standard" then --X-Action
+        Assets.stopAndPlaySound("pirouette", 0.7, 1.1)
+        battler:setAnimation("pirouette")
+        if battler.chara.id == "ralsei" then
+			self:addMercy(4)
+			return "* Ralsei spun like a turntable!"
+		elseif battler.chara.id == "susie" then
+			self:addMercy(5)
+			return "* Susie demonstrates 3D rotation!"
+		elseif battler.chara.id == "jamm" then
+			self:addMercy(3)
+			return "* Jamm revolved around the Z-axis!"
+		else
+			self:addMercy(3)
+			return "* "..battler.chara:getName().." spun around in 3D!"
+		end
+    end
+
+    return super.onShortAct(self, battler, name)
 end
 
 function ThreeDPrism:onTurnEnd()

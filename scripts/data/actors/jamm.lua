@@ -55,6 +55,7 @@ function actor:init()
 
         ["battle/hurt"]         		= {"battle/hurt", 1/15, false, temp=true, duration=0.5},
         ["battle/defeat"]       		= {"battle/defeat", 0.5, true},
+        ["battle/swooned"]       		= {"battle/defeat", 1, true},
 
         ["battle/transition"]   		= {"walk/right", 0.2, true},
         ["battle/intro"]        		= {"battle/attack", 1/15, true},
@@ -65,6 +66,7 @@ function actor:init()
 		
 		-- Cutscene animations
 		["sit"]               			= {"sit", 4/30, true},
+		["pirouette"]    				= {"battle/idle", 3/30, true},
     }
 
     -- Table of sprite offsets (indexed by sprite name)
@@ -113,6 +115,7 @@ function actor:init()
 		
         ["sneak/left"] = {-6, 3},
         ["sneak/right"] = {2, 3},
+        ["pirouette"] = {0, 0},
     }
 
     self.mirror_sprites = {
