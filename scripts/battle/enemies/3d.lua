@@ -57,6 +57,8 @@ function ThreeDPrism:init()
     self:registerAct("Gyrate", "Spin\n6%\nmercy")
 	
     self.progress = 0
+	self.exit_on_defeat = false
+	self.tired_percentage = -1
 end
 
 function ThreeDPrism:isXActionShort(battler)
@@ -134,6 +136,58 @@ function ThreeDPrism:getNextWaves()
     end
 
     return super.getNextWaves(self)
+end
+
+function ThreeDPrism:onSpared()
+    super.onSpared(self)
+    Game.battle.spare_sound:stop()
+    Game.battle.spare_sound:play()
+
+    local spare_flash = self:addFX(ColorMaskFX())
+    spare_flash.amount = 0
+
+    local sparkle_timer = 0
+    local parent = self.parent
+
+    Game.battle.timer:during(5/30, function()
+        spare_flash.amount = spare_flash.amount + 0.2 * DTMULT
+        sparkle_timer = sparkle_timer + DTMULT
+        if sparkle_timer >= 0.5 then
+            local x, y = Utils.random(0, self.width), Utils.random(0, self.height)
+            local sparkle = SpareSparkle(self:getRelativePos(x, y))
+            sparkle.layer = self.layer + 0.001
+            parent:addChild(sparkle)
+            sparkle_timer = sparkle_timer - 0.5
+        end
+   end, function()
+        spare_flash.amount = 0
+		Game.battle.timer:tween(2, self.sprite, {anim_delay = 1}, "in-quad", function()
+			self.sprite:stop(true)
+		end)
+        local img1 = AfterImage(self, 0.7, (1/25) * 0.7)
+        local img2 = AfterImage(self, 0.4, (1/30) * 0.4)
+        img1:addFX(ColorMaskFX())
+        img2:addFX(ColorMaskFX())
+        img1.physics.speed_x = 4
+        img2.physics.speed_x = 8
+        parent:addChild(img1)
+        parent:addChild(img2)
+    end)
+	
+    self:defeat(pacify and "PACIFIED" or "SPARED", false)
+
+	Game.battle.encounter.con = 2
+    Game.battle.music:stop()
+end
+
+function ThreeDPrism:onDefeat(damage, battler)
+    super.onDefeat(self, damage, battler)
+    self.hurt_timer = -1
+    self.defeated = true
+
+    self:defeat("VIOLENCED", true)
+	Game.battle.encounter.con = 2
+    Game.battle.music:stop()
 end
 
 return ThreeDPrism
