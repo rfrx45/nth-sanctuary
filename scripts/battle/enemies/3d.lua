@@ -77,21 +77,7 @@ function ThreeDPrism:onAct(battler, name)
         battler:setAnimation("pirouette")
 		return "* Kris spun around three-dimensionally!"
     elseif name == "Standard" then --X-Action
-        Assets.stopAndPlaySound("pirouette", 0.7, 1.1)
-        battler:setAnimation("pirouette")
-        if battler.chara.id == "ralsei" then
-			self:addMercy(3)
-			return "* Ralsei demonstrates 3D rotation!"
-        elseif battler.chara.id == "susie" then
-			self:addMercy(2)
-			return "* Susie spun like a turntable!"
-		elseif battler.chara.id == "jamm" then
-			self:addMercy(2)
-			return "* Jamm revolved around the Z-axis!"
-		else
-			self:addMercy(2)
-			return "* "..battler.chara:getName().." spun around in 3D!"
-		end
+        super.onShortAct(self, battler, name)
     end
 
     -- If the act is none of the above, run the base onAct function
