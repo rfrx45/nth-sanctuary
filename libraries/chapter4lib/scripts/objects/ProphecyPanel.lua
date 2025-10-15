@@ -61,7 +61,13 @@ end
 
 function ProphecyPanel:draw()
     --TODO: figure out the scrolling masked texture effect
-
+	local hsv = nil
+	for _,filter in ipairs(Game.world.map:getEvents("filter")) do
+		if filter and filter.hsv then
+			hsv = filter
+		end
+	end
+		
 	self.siner = self.siner + DTMULT
     local xsin = 0
     local ysin = math.cos(self.siner / 12) * 4
@@ -127,12 +133,30 @@ function ProphecyPanel:draw()
 	end]]
 	Draw.popCanvas()
 	Draw.popCanvas()
+	local hsv_shader = Assets.getShader("hsv_transform")
+	local last_shader = love.graphics.getShader()
+	if hsv and hsv.fx then
+		love.graphics.setShader(hsv_shader)
+		hsv_shader:send("_hsv", {360-hsv.fx.hue, 1, 1})
+	end
 	for i = 1, 2 do	
 		Draw.setColor(1,1,1,self.panel_alpha * 0.45) -- The alpha isn't accurate to DR's code but fuck it
 		Draw.draw(back_canvas, (self.sprite.x - self.x) + ysin * (2 * i), (self.sprite.y - self.y) + ysin * (2 * i), 0, 2, 2)
 	end
 	Draw.setColor(1,1,1,self.panel_alpha*0.7)
 	Draw.draw(back_canvas, (self.sprite.x - self.x) + xsin, (self.sprite.y - self.y) + ysin, 0, 2, 2)
+	love.graphics.setShader(last_shader)
+	if hsv and hsv.fx then
+		love.graphics.stencil(function()
+			local last_shader = love.graphics.getShader()
+			love.graphics.setShader(Kristal.Shaders["Mask"])
+			Draw.drawCanvas(self.sprite.canvas, (self.sprite.x - self.x) + xsin + self.sprite_offset_x*2, (self.sprite.y - self.y) + ysin + self.sprite_offset_y*2, 0, 2, 2)
+			love.graphics.setShader(last_shader)
+		end, "replace", 1)
+		love.graphics.setStencilTest("greater", 0)
+		Draw.draw(back_canvas, (self.sprite.x - self.x) + xsin, (self.sprite.y - self.y) + ysin, 0, 2, 2)
+		love.graphics.setStencilTest()
+	end
     local text_canvas = Draw.pushCanvas(320, 240)
     love.graphics.stencil(function()
         local last_shader = love.graphics.getShader()
