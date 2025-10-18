@@ -57,6 +57,10 @@ function Guei:init()
     self:registerAct("Xercism", "60% &\nDelayed\nTIRED", {"ralsei"})
 end
 
+function Guei:isXActionShort(battler)
+    return true
+end
+
 function Guei:onAct(battler, name)
     if name == "Exercism" then
         -- Give the enemy 100% mercy
@@ -118,6 +122,29 @@ function Guei:onAct(battler, name)
     return super.onAct(self, battler, name)
 end
 
+function Guei:onShortAct(battler, name)
+    if name == "Standard" then
+        if battler.chara.id == "susie" then
+            self:addMercy(40)
+            return  "* Susie told a ghost story!"
+        elseif battler.chara.id == "ralsei" then
+            self:addMercy(40)
+            return "* Ralsei quoted a holy book!"
+        else
+            self:addMercy(40)
+            local text = {
+                "* "..battler.chara:getName().." lit an incense stick!",
+                "* "..battler.chara:getName().." did something mysterious!",
+                "* "..battler.chara:getName().." said a prayer!",
+                "* "..battler.chara:getName().." made a ghastly sound!"
+            }
+            return TableUtils.pick(text)
+        end
+    end
+
+    return super.onShortAct(self, battler, name)
+end
+
 function Guei:getEncounterText()
     for _,v in ipairs(Game.battle.enemies) do
 		if v.tired then
@@ -171,6 +198,7 @@ end
 
 function Guei:onTurnEnd()
     if self.excerism then
+        self.excerism = false
 		self:setTired(true)
     end
 end
