@@ -36,6 +36,7 @@ function Guei:init()
 
     self.low_health_percentage = 1/3
 
+    self:getAct("Check").description = "Useless\nanalysis"
     self:registerAct("Exercism", "20% &\nDelayed\nTIRED")
     self:registerAct("Xercism", "60% &\nDelayed\nTIRED", {"ralsei"})
     --self:registerAct("OldMan", "I'm\nold!") -- yeahhh you're not here yet
