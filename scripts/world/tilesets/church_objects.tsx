@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.10.2" name="church_objects" tilewidth="900" tileheight="800" tilecount="12" columns="0">
+<tileset version="1.10" tiledversion="1.10.2" name="church_objects" tilewidth="900" tileheight="800" tilecount="13" columns="0">
  <editorsettings>
   <export target="church_objects.lua" format="lua"/>
  </editorsettings>
@@ -24,6 +24,9 @@
  </tile>
  <tile id="6">
   <image width="20" height="80" source="../../../assets/sprites/world/objects/spr_dw_church_stairs_legendmarker.png"/>
+ </tile>
+ <tile id="14">
+  <image width="20" height="100" source="../../../assets/sprites/world/objects/spr_dw_church_stairs_legendmarker_longer.png"/>
  </tile>
  <tile id="7">
   <image width="45" height="33" source="../../../assets/sprites/world/objects/spr_dw_church_piano.png"/>

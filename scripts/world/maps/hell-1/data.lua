@@ -268,7 +268,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["map"] = "secrets/secret_frisk_room",
+            ["map"] = "secrets/frisk_room",
             ["marker"] = "spawn"
           }
         },
