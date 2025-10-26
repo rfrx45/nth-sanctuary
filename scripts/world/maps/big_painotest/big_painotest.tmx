@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="44" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="13" nextobjectid="44">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="44" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="13" nextobjectid="46">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -42,9 +42,6 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,409,470,470,470,470,470,470,470,470,407,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="2" name="objects_party">
-  <object id="14" gid="10" x="720" y="402" width="322" height="382"/>
- </objectgroup>
  <objectgroup id="7" name="objects_piano">
   <object id="15" name="pianobig" x="780" y="320" width="200" height="20">
    <properties>
@@ -52,7 +49,9 @@
     <property name="solution" value="aaa"/>
    </properties>
   </object>
+  <object id="45" gid="10" x="720" y="402" width="322" height="382"/>
  </objectgroup>
+ <objectgroup id="2" name="objects_party"/>
  <objectgroup id="8" name="objects_lightarea">
   <object id="23" gid="604" x="640" y="800" width="120" height="720">
    <properties>

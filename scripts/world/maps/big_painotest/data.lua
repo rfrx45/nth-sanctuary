@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 13,
-  nextobjectid = 44,
+  nextobjectid = 46,
   properties = {
     ["music"] = "bell_ambience"
   },
@@ -116,36 +116,6 @@ return {
     {
       type = "objectgroup",
       draworder = "topdown",
-      id = 2,
-      name = "objects_party",
-      class = "",
-      visible = true,
-      opacity = 1,
-      offsetx = 0,
-      offsety = 0,
-      parallaxx = 1,
-      parallaxy = 1,
-      properties = {},
-      objects = {
-        {
-          id = 14,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 720,
-          y = 402,
-          width = 322,
-          height = 382,
-          rotation = 0,
-          gid = 10,
-          visible = true,
-          properties = {}
-        }
-      }
-    },
-    {
-      type = "objectgroup",
-      draworder = "topdown",
       id = 7,
       name = "objects_piano",
       class = "",
@@ -172,8 +142,37 @@ return {
             ["resetmus"] = true,
             ["solution"] = "aaa"
           }
+        },
+        {
+          id = 45,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 720,
+          y = 402,
+          width = 322,
+          height = 382,
+          rotation = 0,
+          gid = 10,
+          visible = true,
+          properties = {}
         }
       }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 2,
+      name = "objects_party",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {}
     },
     {
       type = "objectgroup",
