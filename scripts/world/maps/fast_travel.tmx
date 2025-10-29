@@ -8,8 +8,8 @@
  </properties>
  <tileset firstgid="1" source="../tilesets/bg_dw_church_library_2_tileset.tsx"/>
  <tileset firstgid="261" source="../tilesets/church_objects.tsx"/>
- <tileset firstgid="274" source="../tilesets/light_areas.tsx"/>
- <tileset firstgid="280" source="../tilesets/tiles_moss.tsx"/>
+ <tileset firstgid="280" source="../tilesets/light_areas.tsx"/>
+ <tileset firstgid="290" source="../tilesets/tiles_moss.tsx"/>
  <layer id="1" name="Tile Layer 1" width="27" height="48">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -157,7 +157,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3221225752,1073742104,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3221225762,1073742114,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -228,7 +228,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="4" name="objects">
+ <objectgroup id="4" name="objects_party">
   <object id="13" name="ft_transition" x="520" y="1920" width="160" height="40"/>
   <object id="22" name=" " gid="272" x="40" y="1600" width="160" height="160"/>
   <object id="23" name=" " gid="272" x="200" y="1600" width="160" height="160"/>
@@ -275,7 +275,7 @@
   </object>
  </objectgroup>
  <objectgroup id="7" name="objects_lightarea">
-  <object id="28" gid="276" x="40" y="2040" width="160" height="1980">
+  <object id="28" gid="282" x="40" y="2040" width="160" height="1980">
    <properties>
     <property name="light" type="bool" value="true"/>
     <property name="light_alpha" type="float" value="0.1"/>
@@ -283,7 +283,7 @@
     <property name="light_type" type="int" value="1"/>
    </properties>
   </object>
-  <object id="31" gid="276" x="200" y="2040" width="160" height="1980">
+  <object id="31" gid="282" x="200" y="2040" width="160" height="1980">
    <properties>
     <property name="light" type="bool" value="true"/>
     <property name="light_alpha" type="float" value="0.1"/>
@@ -291,7 +291,7 @@
     <property name="light_type" type="int" value="1"/>
    </properties>
   </object>
-  <object id="32" gid="2147483924" x="360" y="2040" width="160" height="1980">
+  <object id="32" gid="2147483930" x="360" y="2040" width="160" height="1980">
    <properties>
     <property name="light" type="bool" value="true"/>
     <property name="light_alpha" type="float" value="0.1"/>
@@ -306,7 +306,7 @@
    </properties>
    <point/>
   </object>
-  <object id="62" gid="276" x="680" y="2040" width="160" height="1980">
+  <object id="62" gid="282" x="680" y="2040" width="160" height="1980">
    <properties>
     <property name="light" type="bool" value="true"/>
     <property name="light_alpha" type="float" value="0.1"/>
@@ -314,7 +314,7 @@
     <property name="light_type" type="int" value="1"/>
    </properties>
   </object>
-  <object id="63" gid="2147483924" x="880" y="2040" width="160" height="1980">
+  <object id="63" gid="2147483930" x="880" y="2040" width="160" height="1980">
    <properties>
     <property name="light" type="bool" value="true"/>
     <property name="light_alpha" type="float" value="0.1"/>

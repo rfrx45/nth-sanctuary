@@ -28,12 +28,12 @@ return {
     },
     {
       name = "light_areas",
-      firstgid = 274,
+      firstgid = 280,
       filename = "../tilesets/light_areas.tsx"
     },
     {
       name = "tiles_moss",
-      firstgid = 280,
+      firstgid = 290,
       filename = "../tilesets/tiles_moss.tsx"
     }
   },
@@ -234,7 +234,7 @@ return {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3221225752, 1073742104, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3221225762, 1073742114, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -435,7 +435,7 @@ return {
       type = "objectgroup",
       draworder = "topdown",
       id = 4,
-      name = "objects",
+      name = "objects_party",
       class = "",
       visible = true,
       opacity = 1,
@@ -652,7 +652,7 @@ return {
           width = 160,
           height = 1980,
           rotation = 0,
-          gid = 276,
+          gid = 282,
           visible = true,
           properties = {
             ["light"] = true,
@@ -671,7 +671,7 @@ return {
           width = 160,
           height = 1980,
           rotation = 0,
-          gid = 276,
+          gid = 282,
           visible = true,
           properties = {
             ["light"] = true,
@@ -690,7 +690,7 @@ return {
           width = 160,
           height = 1980,
           rotation = 0,
-          gid = 2147483924,
+          gid = 2147483930,
           visible = true,
           properties = {
             ["light"] = true,
@@ -725,7 +725,7 @@ return {
           width = 160,
           height = 1980,
           rotation = 0,
-          gid = 276,
+          gid = 282,
           visible = true,
           properties = {
             ["light"] = true,
@@ -744,7 +744,7 @@ return {
           width = 160,
           height = 1980,
           rotation = 0,
-          gid = 2147483924,
+          gid = 2147483930,
           visible = true,
           properties = {
             ["light"] = true,
