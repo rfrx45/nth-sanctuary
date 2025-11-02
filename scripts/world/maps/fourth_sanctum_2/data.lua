@@ -1036,7 +1036,7 @@ return {
         },
         {
           id = 110,
-          name = "entry_priism",
+          name = "entry_prism",
           type = "",
           shape = "point",
           x = 1880,
