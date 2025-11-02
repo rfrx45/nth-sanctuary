@@ -127,6 +127,7 @@ function ThreeDPrism:onAct(battler, name)
 			self.comment = "(Furious)"
 			self:removeAct("Challenge")
 			self:registerAct("BegForMercy", "Revert\ndifficulty", "all", 8)
+			Game.battle.encounter.raged = true
 		end)
 	elseif name == "BegForMercy" then
         battler:setAnimation("act")
@@ -149,6 +150,7 @@ function ThreeDPrism:onAct(battler, name)
 				self:addMercy(25)
 				cutscene:text("* The prism turns towards you for a moment,[wait:5] then slows down...")
 				self.challenge_acted = true
+				Game.battle.encounter.raged = false
 			end
 			self.comment = self.last_comment or ""
 			if self.comment ~= "" then

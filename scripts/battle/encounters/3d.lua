@@ -14,6 +14,7 @@ function ThreeDPrism:init()
     self.reduced_tension = true
     self.siner = 0
 	self.rage_anim_speed = 1
+	self.raged = false
 	
     -- Add the dummy enemy to the encounter
     self.g = self:addEnemy("3d", 501, 269)
@@ -113,11 +114,11 @@ function ThreeDPrism:update()
 end
 
 function ThreeDPrism:canSwoon(target)
-    return true
+    return Game.battle.encounter.raged
 end
 
 function ThreeDPrism:isAutoHealingEnabled(target)
-    return false
+    return not Game.battle.encounter.raged
 end
 
 function ThreeDPrism:drawBackground(fade)
