@@ -7,11 +7,11 @@ function actor:init()
     self.name = "Jamm"
 
     -- Width and height for this actor, used to determine its center
-    self.width = 21
-    self.height = 41
+    self.width = 19
+    self.height = 38
 
     -- Hitbox for this actor in the overworld (optional, uses width and height by default)
-    self.hitbox = {3, 28, 13, 10}
+    self.hitbox = {4, 28, 13, 10}
 
     -- Color for this actor used in outline areas (optional, defaults to red)
     self.color = {0, 1, 1}
