@@ -160,8 +160,12 @@ function ThreeDPrism:onAct(battler, name)
 				self.name = "3D Spinning Prism"
 			end
 			self.attack = 20
-			if self.progress >= 5 then
-				self.progress = self.progress - 3
+			if self.progress == 5 then
+				self.progress = 3
+			elseif self.progress == 6 then
+				self.progress = 4
+			elseif self.progress == 7 then
+				self.progress = 2
 			end
 			self:removeAct("BegForMercy")
 			self:registerAct("Challenge", "Still a\nterrible\nidea", "susie")
