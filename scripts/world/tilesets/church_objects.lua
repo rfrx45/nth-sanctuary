@@ -23,7 +23,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 17,
+  tilecount = 18,
   tiles = {
     {
       id = 0,
@@ -144,6 +144,12 @@ return {
       image = "../../../assets/sprites/world/objects/church_torch_4.png",
       width = 18,
       height = 60
+    },
+    {
+      id = 19,
+      image = "../../../assets/sprites/world/objects/darkdoor_closed.png",
+      width = 360,
+      height = 310
     }
   }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="27" height="48" tilewidth="40" tileheight="40" infinite="0" nextlayerid="9" nextobjectid="64">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="27" height="48" tilewidth="40" tileheight="40" infinite="0" nextlayerid="9" nextobjectid="67">
  <editorsettings>
   <export target="fast_travel.lua" format="lua"/>
  </editorsettings>
@@ -8,14 +8,14 @@
  </properties>
  <tileset firstgid="1" source="../tilesets/bg_dw_church_library_2_tileset.tsx"/>
  <tileset firstgid="261" source="../tilesets/church_objects.tsx"/>
- <tileset firstgid="280" source="../tilesets/light_areas.tsx"/>
- <tileset firstgid="290" source="../tilesets/tiles_moss.tsx"/>
+ <tileset firstgid="281" source="../tilesets/light_areas.tsx"/>
+ <tileset firstgid="291" source="../tilesets/tiles_moss.tsx"/>
  <layer id="1" name="Tile Layer 1" width="27" height="48">
   <data encoding="csv">
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,201,202,202,203,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,171,173,163,174,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,171,162,173,174,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,171,173,172,174,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,171,163,173,174,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,171,163,173,174,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,171,173,162,174,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,171,173,173,174,0,0,0,0,0,0,0,0,0,0,
@@ -157,7 +157,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3221225762,1073742114,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3221225763,1073742115,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -170,9 +170,8 @@
   <object id="1" x="40" y="1680" width="480" height="240"/>
   <object id="2" x="680" y="1680" width="400" height="240"/>
   <object id="4" x="0" y="1600" width="40" height="80"/>
-  <object id="5" x="0" y="160" width="520" height="1400"/>
-  <object id="6" x="520" y="120" width="160" height="40"/>
-  <object id="7" x="680" y="160" width="400" height="1440"/>
+  <object id="5" x="0" y="0" width="520" height="1560"/>
+  <object id="7" x="680" y="0" width="400" height="1600"/>
   <object id="21" x="40" y="1560" width="480" height="40"/>
   <object id="52" x="1040" y="1600" width="40" height="80"/>
  </objectgroup>
@@ -273,9 +272,15 @@
     <property name="cutscene" value="events.moss2"/>
    </properties>
   </object>
+  <object id="64" name="transition" x="520" y="-40" width="160" height="40">
+   <properties>
+    <property name="map" value="grand_door"/>
+    <property name="marker" value="entry_ft"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="7" name="objects_lightarea">
-  <object id="28" gid="282" x="40" y="2040" width="160" height="1980">
+  <object id="28" gid="283" x="40" y="2040" width="160" height="1980">
    <properties>
     <property name="light" type="bool" value="true"/>
     <property name="light_alpha" type="float" value="0.1"/>
@@ -283,7 +288,7 @@
     <property name="light_type" type="int" value="1"/>
    </properties>
   </object>
-  <object id="31" gid="282" x="200" y="2040" width="160" height="1980">
+  <object id="31" gid="283" x="200" y="2040" width="160" height="1980">
    <properties>
     <property name="light" type="bool" value="true"/>
     <property name="light_alpha" type="float" value="0.1"/>
@@ -291,7 +296,7 @@
     <property name="light_type" type="int" value="1"/>
    </properties>
   </object>
-  <object id="32" gid="2147483930" x="360" y="2040" width="160" height="1980">
+  <object id="32" gid="2147483931" x="360" y="2040" width="160" height="1980">
    <properties>
     <property name="light" type="bool" value="true"/>
     <property name="light_alpha" type="float" value="0.1"/>
@@ -306,7 +311,7 @@
    </properties>
    <point/>
   </object>
-  <object id="62" gid="282" x="680" y="2040" width="160" height="1980">
+  <object id="62" gid="283" x="680" y="2040" width="160" height="1980">
    <properties>
     <property name="light" type="bool" value="true"/>
     <property name="light_alpha" type="float" value="0.1"/>
@@ -314,7 +319,7 @@
     <property name="light_type" type="int" value="1"/>
    </properties>
   </object>
-  <object id="63" gid="2147483930" x="880" y="2040" width="160" height="1980">
+  <object id="63" gid="2147483931" x="880" y="2040" width="160" height="1980">
    <properties>
     <property name="light" type="bool" value="true"/>
     <property name="light_alpha" type="float" value="0.1"/>
@@ -328,6 +333,9 @@
    <point/>
   </object>
   <object id="19" name="spawn" x="600" y="1680">
+   <point/>
+  </object>
+  <object id="66" name="entry_grand" x="600" y="80">
    <point/>
   </object>
  </objectgroup>

@@ -102,6 +102,13 @@ function Mod:onTextSound(sound, node)
         return true
     end
 end
+
+function Mod:onMapMusic(map, music)
+	if music == "grand_bells" then
+		return {"bell_ambience", 0.5, 0.5}
+	end
+end
+
 --[==[
 function Mod:preInit()
     ---@return string|number[][]

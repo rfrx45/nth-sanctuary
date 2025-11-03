@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="25">
+ <editorsettings>
+  <export target="data.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="border" value=""/>
+  <property name="music" value="grand_bells"/>
+ </properties>
+ <tileset firstgid="1" source="../../tilesets/bg_dw_church_library_2_tileset.tsx"/>
+ <tileset firstgid="261" source="../../tilesets/church_objects.tsx"/>
+ <tileset firstgid="281" source="../../tilesets/light_areas.tsx"/>
+ <objectgroup id="6" name="objects_parallax"/>
+ <layer id="1" name="Tile Layer 1" width="16" height="16">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,171,173,173,174,0,0,0,0,0,0,
+0,0,0,0,0,0,171,173,173,174,0,0,0,0,0,0,
+0,0,0,0,0,0,171,173,173,174,0,0,0,0,0,0,
+0,0,0,0,0,0,171,173,173,174,0,0,0,0,0,0,
+0,0,0,0,0,0,171,173,173,174,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="2" name="objects_party">
+  <object id="1" gid="280" x="134" y="440" width="360" height="310"/>
+  <object id="14" name="transition" x="240" y="640" width="160" height="40">
+   <properties>
+    <property name="map" value="fast_travel"/>
+    <property name="marker" value="entry_grand"/>
+   </properties>
+  </object>
+  <object id="20" name="cameratarget" x="240" y="440" width="160" height="40">
+   <properties>
+    <property name="lockx" type="bool" value="true"/>
+    <property name="locky" type="bool" value="true"/>
+    <property name="marker" value="targ"/>
+    <property name="time" type="float" value="1"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="3" name="objects_lightareas">
+  <object id="2" name="darkness" x="0" y="160">
+   <properties>
+    <property name="alpha" type="float" value="0.5"/>
+    <property name="highlight" type="bool" value="true"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="5" gid="2147483931" x="580" y="670" width="120" height="510">
+   <properties>
+    <property name="light" type="bool" value="true"/>
+    <property name="light_alpha" type="float" value="0.1"/>
+    <property name="light_color" type="color" value="#ffffffff"/>
+    <property name="light_type" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="22" gid="2147483931" x="400" y="680" width="160" height="680">
+   <properties>
+    <property name="light" type="bool" value="true"/>
+    <property name="light_alpha" type="float" value="0.1"/>
+    <property name="light_color" type="color" value="#ffffffff"/>
+    <property name="light_type" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="23" gid="2147483931" x="80" y="680" width="160" height="680">
+   <properties>
+    <property name="light" type="bool" value="true"/>
+    <property name="light_alpha" type="float" value="0.1"/>
+    <property name="light_color" type="color" value="#ffffffff"/>
+    <property name="light_type" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="24" gid="2147483931" x="-60" y="670" width="120" height="510">
+   <properties>
+    <property name="light" type="bool" value="true"/>
+    <property name="light_alpha" type="float" value="0.1"/>
+    <property name="light_color" type="color" value="#ffffffff"/>
+    <property name="light_type" type="int" value="1"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="4" name="collision">
+  <object id="9" x="200" y="440" width="40" height="200"/>
+  <object id="11" x="240" y="400" width="160" height="40"/>
+  <object id="12" x="400" y="440" width="40" height="200"/>
+ </objectgroup>
+ <objectgroup id="5" name="markers">
+  <object id="13" name="spawn" x="320" y="560">
+   <point/>
+  </object>
+  <object id="16" name="entry_ft" x="320" y="600">
+   <point/>
+  </object>
+  <object id="21" name="targ" x="320" y="200">
+   <point/>
+  </object>
+ </objectgroup>
+</map>

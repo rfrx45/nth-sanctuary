@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 9,
-  nextobjectid = 64,
+  nextobjectid = 67,
   properties = {
     ["music"] = "fast-travel"
   },
@@ -28,12 +28,12 @@ return {
     },
     {
       name = "light_areas",
-      firstgid = 280,
+      firstgid = 281,
       filename = "../tilesets/light_areas.tsx"
     },
     {
       name = "tiles_moss",
-      firstgid = 290,
+      firstgid = 291,
       filename = "../tilesets/tiles_moss.tsx"
     }
   },
@@ -56,10 +56,10 @@ return {
       properties = {},
       encoding = "lua",
       data = {
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 201, 202, 202, 203, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 171, 173, 163, 174, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 171, 162, 173, 174, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 171, 173, 172, 174, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 171, 163, 173, 174, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 171, 163, 173, 174, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 171, 173, 162, 174, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 171, 173, 173, 174, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -234,7 +234,7 @@ return {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3221225762, 1073742114, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3221225763, 1073742115, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -302,22 +302,9 @@ return {
           type = "",
           shape = "rectangle",
           x = 0,
-          y = 160,
+          y = 0,
           width = 520,
-          height = 1400,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 6,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 520,
-          y = 120,
-          width = 160,
-          height = 40,
+          height = 1560,
           rotation = 0,
           visible = true,
           properties = {}
@@ -328,9 +315,9 @@ return {
           type = "",
           shape = "rectangle",
           x = 680,
-          y = 160,
+          y = 0,
           width = 400,
-          height = 1440,
+          height = 1600,
           rotation = 0,
           visible = true,
           properties = {}
@@ -625,6 +612,22 @@ return {
           properties = {
             ["cutscene"] = "events.moss2"
           }
+        },
+        {
+          id = 64,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = 520,
+          y = -40,
+          width = 160,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["map"] = "grand_door",
+            ["marker"] = "entry_ft"
+          }
         }
       }
     },
@@ -652,7 +655,7 @@ return {
           width = 160,
           height = 1980,
           rotation = 0,
-          gid = 282,
+          gid = 283,
           visible = true,
           properties = {
             ["light"] = true,
@@ -671,7 +674,7 @@ return {
           width = 160,
           height = 1980,
           rotation = 0,
-          gid = 282,
+          gid = 283,
           visible = true,
           properties = {
             ["light"] = true,
@@ -690,7 +693,7 @@ return {
           width = 160,
           height = 1980,
           rotation = 0,
-          gid = 2147483930,
+          gid = 2147483931,
           visible = true,
           properties = {
             ["light"] = true,
@@ -725,7 +728,7 @@ return {
           width = 160,
           height = 1980,
           rotation = 0,
-          gid = 282,
+          gid = 283,
           visible = true,
           properties = {
             ["light"] = true,
@@ -744,7 +747,7 @@ return {
           width = 160,
           height = 1980,
           rotation = 0,
-          gid = 2147483930,
+          gid = 2147483931,
           visible = true,
           properties = {
             ["light"] = true,
@@ -789,6 +792,19 @@ return {
           shape = "point",
           x = 600,
           y = 1680,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 66,
+          name = "entry_grand",
+          type = "",
+          shape = "point",
+          x = 600,
+          y = 80,
           width = 0,
           height = 0,
           rotation = 0,
