@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="16" height="25" tilewidth="40" tileheight="40" infinite="0" nextlayerid="11" nextobjectid="44">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="16" height="25" tilewidth="40" tileheight="40" infinite="0" nextlayerid="12" nextobjectid="49">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -11,6 +11,7 @@
  <tileset firstgid="1" source="../../tilesets/bg_dw_church_library_2_tileset.tsx"/>
  <tileset firstgid="261" source="../../tilesets/church_objects.tsx"/>
  <tileset firstgid="282" source="../../tilesets/light_areas.tsx"/>
+ <tileset firstgid="292" source="../../tilesets/bg_dw_church_tileset_new.tsx"/>
  <objectgroup id="6" name="objects_parallax"/>
  <layer id="1" name="Tile Layer 1" width="16" height="25">
   <data encoding="csv">
@@ -19,14 +20,14 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+841,841,841,841,841,841,841,841,841,841,841,841,841,841,841,841,
+424,424,424,424,424,424,424,424,424,424,424,424,424,424,424,424,
+424,424,424,424,424,424,424,424,424,424,424,424,424,424,424,424,
+424,424,424,424,424,424,424,424,424,424,424,424,424,424,424,424,
+424,424,424,424,424,424,424,424,424,424,424,424,424,424,424,424,
+424,424,424,424,424,424,424,424,424,424,424,424,424,424,424,424,
+424,424,424,424,424,424,424,424,424,424,424,424,424,424,424,424,
+424,424,424,424,424,424,424,424,424,424,424,424,424,424,424,424,
 0,0,0,0,0,0,171,163,162,174,0,0,0,0,0,0,
 0,0,0,0,0,0,171,172,173,184,0,0,0,0,0,0,
 0,0,0,0,0,0,171,173,173,174,0,0,0,0,0,0,
@@ -41,6 +42,10 @@
 0,0,0,0,0,0,171,173,173,174,0,0,0,0,0,0
 </data>
  </layer>
+ <objectgroup id="11" name="objects_tile">
+  <object id="47" gid="424" x="0" y="250" width="140" height="40"/>
+  <object id="48" gid="424" x="490" y="250" width="150" height="40"/>
+ </objectgroup>
  <objectgroup id="2" name="objects_closeddoor">
   <object id="1" gid="280" x="134" y="520" width="360" height="310"/>
  </objectgroup>
