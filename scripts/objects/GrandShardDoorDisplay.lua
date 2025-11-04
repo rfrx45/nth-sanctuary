@@ -27,6 +27,8 @@ function GrandShardDoorDisplay:init(finished)
     -- the scrolling DEPTHS images used by the panels.
     self.shard_icon = Assets.getTexture("ui/shard_door_icon")
     self.tiletex = Assets.getTexture("backgrounds/IMAGE_DEPTH_EXTEND_SEAMLESS")
+    self.gradient20 = Assets.getTexture("backgrounds/gradient20")
+    self.fill = Assets.getTexture("bubbles/fill")
     self.golden = ColorUtils.hexToRGB("#ffc90eff")
 	
 	self.panel_alpha = 0
@@ -52,6 +54,12 @@ function GrandShardDoorDisplay:draw()
     local ysin = math.cos(self.siner / 12) * 4
 
     super.draw(self)
+	local barheight = 60
+	Draw.setColor(0,0,0,0.9)
+	Draw.draw(self.gradient20, -SCREEN_WIDTH/2, ysin, 0, 64, 1, 0, 20)
+	Draw.draw(self.fill, -SCREEN_WIDTH/2, ysin, 0, SCREEN_WIDTH*2, barheight, 0, 0)
+	Draw.draw(self.gradient20, -SCREEN_WIDTH/2, ysin + barheight, 0, 64, -1, 0, 20)
+	Draw.setColor(1,1,1,1)
     local display_canvas = Draw.pushCanvas(320, 240)
     love.graphics.stencil(function()
         local last_shader = love.graphics.getShader()
